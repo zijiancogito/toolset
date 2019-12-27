@@ -1,0 +1,451 @@
+../DataSets/cfcode/code/35631044.cpp
+../DataSets/cfcode/code/35631044.cpp:3:28: error: use of parameter outside function body before ‘]’ token
+ int ifexist(int n,int arr[n],int s){
+                            ^
+../DataSets/cfcode/code/35631044.cpp:3:29: error: expected ‘)’ before ‘,’ token
+ int ifexist(int n,int arr[n],int s){
+                             ^
+../DataSets/cfcode/code/35631044.cpp:3:30: error: expected unqualified-id before ‘int’
+ int ifexist(int n,int arr[n],int s){
+                              ^~~
+
+../DataSets/cfcode/code/13047398.cpp
+../DataSets/cfcode/code/13047398.cpp:3:33: error: array bound is not an integer constant before ‘]’ token
+ void Function0(int Parm0[Global0][3],int Parm1,int Parm2)
+                                 ^
+../DataSets/cfcode/code/13047398.cpp:3:37: error: expected ‘)’ before ‘,’ token
+ void Function0(int Parm0[Global0][3],int Parm1,int Parm2)
+                                     ^
+../DataSets/cfcode/code/13047398.cpp:3:38: error: expected unqualified-id before ‘int’
+ void Function0(int Parm0[Global0][3],int Parm1,int Parm2)
+                                      ^~~
+
+../DataSets/cfcode/code/35941676.cpp
+../DataSets/cfcode/code/35941676.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/35941676.cpp:27:23: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+           if(LocalVar0%abs(LocalVar2-LocalVar3)>(int)(log(LocalVar0)/log(2)))
+              ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:28:37: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+                printf("%d",LocalVar0%abs(LocalVar2-LocalVar3)-(int)(log(LocalVar0)/log(2)));
+                            ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:30:36: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+               printf("%d",LocalVar0%abs(LocalVar2-LocalVar3));
+                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:38:24: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+            if(LocalVar0%abs(LocalVar2-LocalVar3)>(int)(log(LocalVar0)/log(2)))
+               ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:39:37: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+                printf("%d",LocalVar0%abs(LocalVar2-LocalVar3)-(int)(log(LocalVar0)/log(2)));
+                            ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:41:36: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+               printf("%d",LocalVar0%abs(LocalVar2-LocalVar3));
+                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:51:28: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+                if(LocalVar0%abs(LocalVar2-LocalVar3)>(int)(log(LocalVar0)/log(2)))
+                   ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:52:37: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+                printf("%d",LocalVar0%abs(LocalVar2-LocalVar3)-(int)(log(LocalVar0)/log(2)));
+                            ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:54:36: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+               printf("%d",LocalVar0%abs(LocalVar2-LocalVar3));
+                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:62:28: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+                if(LocalVar0%abs(LocalVar2-LocalVar3)>(int)(log(LocalVar0)/log(2)))
+                   ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:63:37: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+                printf("%d",LocalVar0%abs(LocalVar2-LocalVar3)-(int)(log(LocalVar0)/log(2)));
+                            ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../DataSets/cfcode/code/35941676.cpp:65:36: error: invalid operands of types ‘int’ and ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ to binary ‘operator%’
+               printf("%d",LocalVar0%abs(LocalVar2-LocalVar3));
+                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+
+../DataSets/cfcode/code/34681303.cpp
+../DataSets/cfcode/code/34681303.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/34681303.cpp:12:5: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+     gets(LocalVar4);
+     ^~~~
+In file included from ../DataSets/cfcode/code/34681303.cpp:2:0:
+/usr/include/stdio.h:577:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^~~~
+../DataSets/cfcode/code/34681303.cpp:12:19: warning: ‘char* gets(char*)’ is deprecated [-Wdeprecated-declarations]
+     gets(LocalVar4);
+                   ^
+In file included from ../DataSets/cfcode/code/34681303.cpp:2:0:
+/usr/include/stdio.h:577:14: note: declared here
+ extern char *gets (char *__s) __wur __attribute_deprecated__;
+              ^~~~
+../DataSets/cfcode/code/34681303.cpp:63:169: error: invalid operands of types ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ and ‘int’ to binary ‘operator%’
+                 else if (abs(LocalVar5[LocalVar0])<=LocalVar0-LocalVar1+1-LocalVar6[LocalVar0]&&((LocalVar0-LocalVar1+1-LocalVar6[LocalVar0]-abs(LocalVar5[LocalVar0])))%2==0) {LocalVar3++;}
+                                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+../DataSets/cfcode/code/34681303.cpp:68:259: error: invalid operands of types ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ and ‘int’ to binary ‘operator%’
+                 else if (abs(LocalVar5[LocalVar0]-LocalVar5[LocalVar1-1])<=LocalVar0-LocalVar1+1-LocalVar6[LocalVar0]+LocalVar6[LocalVar1-1]&&(LocalVar0-LocalVar1+1-LocalVar6[LocalVar0]+LocalVar6[LocalVar1-1]-abs(LocalVar5[LocalVar0]-LocalVar5[LocalVar1-1]))%2==0) {LocalVar3++;}
+                                                                                                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+
+../DataSets/cfcode/code/36472162.cpp
+../DataSets/cfcode/code/36472162.cpp: In instantiation of ‘void Function11(T) [with T = int]’:
+../DataSets/cfcode/code/36472162.cpp:57:20:   required from here
+../DataSets/cfcode/code/36472162.cpp:38:35: error: ‘printe’ was not declared in this scope
+     if(Parm0<0)putchar('-'),printe(-Parm0);
+                             ~~~~~~^~~~~~~~
+../DataSets/cfcode/code/36472162.cpp:39:16: error: ‘printe’ was not declared in this scope
+     else printe(Parm0);
+          ~~~~~~^~~~~~~
+
+../DataSets/cfcode/code/36778321.cpp
+../DataSets/cfcode/code/36778321.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/36778321.cpp:42:27: error: call of overloaded ‘abs(double&)’ is ambiguous
+         sum1+=abs(niz[i].t)*niz[i].a;
+                           ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+../DataSets/cfcode/code/36778321.cpp:64:35: error: call of overloaded ‘abs(double&)’ is ambiguous
+             if (sum2>=abs(niz[i].t)*niz[i].a)
+                                   ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+../DataSets/cfcode/code/36778321.cpp:67:35: error: call of overloaded ‘abs(double&)’ is ambiguous
+                 sum2-=abs(niz[i].t)*niz[i].a;
+                                   ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+../DataSets/cfcode/code/36778321.cpp:71:43: error: call of overloaded ‘abs(double&)’ is ambiguous
+                 uku=uku+(sum2/abs(niz[i].t));
+                                           ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/36778321.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+
+../DataSets/cfcode/code/35030124.cpp
+../DataSets/cfcode/code/35030124.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/35030124.cpp:10:19: error: invalid operands of types ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ and ‘int’ to binary ‘operator%’
+     if(abs(y - x) % 2 == 0 || y == 0 || (y - x > 1) || (y == 1 && x != 0))
+        ~~~~~~~~~~~^~~
+
+../DataSets/cfcode/code/13064584.cpp
+../DataSets/cfcode/code/13064584.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/13064584.cpp:11:41: error: ‘malloc’ was not declared in this scope
+     int *arr=(int *)malloc(sizeof(int)*n);
+                                         ^
+../DataSets/cfcode/code/13064584.cpp:15:33: error: ‘qsort’ was not declared in this scope
+     qsort(arr,n,sizeof(int),comp);
+                                 ^
+
+../DataSets/cfcode/code/13009155.cpp
+../DataSets/cfcode/code/13009155.cpp: In function ‘void fft(im*, im*, im*, int)’:
+../DataSets/cfcode/code/13009155.cpp:21:23: error: unable to find numeric literal operator ‘operator""j’
+  im w=1, wn=exp((im)(-2j*PI/n));
+                       ^~
+../DataSets/cfcode/code/13009155.cpp:21:23: note: use -std=gnu++11 or -fext-numeric-literals to enable more built-in suffixes
+
+../DataSets/cfcode/code/13064547.cpp
+../DataSets/cfcode/code/13064547.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/13064547.cpp:11:55: error: ‘malloc’ was not declared in this scope
+     int *LocalVar3=(int *)malloc(sizeof(int)*LocalVar0);
+                                                       ^
+../DataSets/cfcode/code/13064547.cpp:15:52: error: ‘qsort’ was not declared in this scope
+     qsort(LocalVar3,LocalVar0,sizeof(int),Function0);
+                                                    ^
+
+../DataSets/cfcode/code/35339537.cpp
+../DataSets/cfcode/code/35339537.cpp:1:15: error: missing terminating > character
+ #include <bits
+               ^
+../DataSets/cfcode/code/35339537.cpp:1:15: fatal error: bits: No such file or directory
+compilation terminated.
+
+../DataSets/cfcode/code/36527489.cpp
+../DataSets/cfcode/code/36527489.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/36527489.cpp:46:9: error: declaration does not declare anything [-fpermissive]
+         int ;
+         ^~~
+
+../DataSets/cfcode/code/35775479.cpp
+../DataSets/cfcode/code/35775479.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/35775479.cpp:18:45: error: call of overloaded ‘abs(double)’ is ambiguous
+  long long int cycles=2.00*h/(2.00*r+abs(f-r));
+                                             ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/35775479.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/35775479.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+../DataSets/cfcode/code/35775479.cpp:20:32: error: call of overloaded ‘abs(double)’ is ambiguous
+  double timedone=cyc*(r+abs(f-r));
+                                ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/35775479.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/35775479.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+../DataSets/cfcode/code/35775479.cpp:22:51: error: call of overloaded ‘abs(double)’ is ambiguous
+  double timeleft=2.000*h-(2.0000*cyc*r+cyc*abs(f-r));
+                                                   ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/35775479.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/35775479.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+
+../DataSets/cfcode/code/13692448.cpp
+../DataSets/cfcode/code/13692448.cpp:15:11: error: declaration of ‘node* mail::node’ [-fpermissive]
+     node* node;
+           ^~~~
+../DataSets/cfcode/code/13692448.cpp:4:21: error: changes meaning of ‘node’ from ‘typedef struct node node’ [-fpermissive]
+ typedef struct node node;
+                     ^~~~
+
+../DataSets/cfcode/code/36705818.cpp
+../DataSets/cfcode/code/36705818.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/36705818.cpp:33:33: error: ‘qsort’ was not declared in this scope
+  qsort(s, N, sizeof(ss), uporedi);
+                                 ^
+../DataSets/cfcode/code/36705818.cpp:35:44: warning: format ‘%lf’ expects argument of type ‘double’, but argument 2 has type ‘long double’ [-Wformat=]
+  if (temperatura == T) printf("%.15lf\n", d);
+                                            ^
+../DataSets/cfcode/code/36705818.cpp:50:23: warning: format ‘%lf’ expects argument of type ‘double’, but argument 2 has type ‘long double’ [-Wformat=]
+   printf("%.15lf\n", d);
+                       ^
+../DataSets/cfcode/code/36705818.cpp:66:23: warning: format ‘%lf’ expects argument of type ‘double’, but argument 2 has type ‘long double’ [-Wformat=]
+   printf("%.15lf\n", d);
+                       ^
+
+../DataSets/cfcode/code/35646606.cpp
+../DataSets/cfcode/code/35646606.cpp:3:28: error: use of parameter outside function body before ‘]’ token
+ int ifexist(int n,int arr[n],int s){
+                            ^
+../DataSets/cfcode/code/35646606.cpp:3:29: error: expected ‘)’ before ‘,’ token
+ int ifexist(int n,int arr[n],int s){
+                             ^
+../DataSets/cfcode/code/35646606.cpp:3:30: error: expected unqualified-id before ‘int’
+ int ifexist(int n,int arr[n],int s){
+                              ^~~
+
+../DataSets/cfcode/code/34680506.cpp
+../DataSets/cfcode/code/34680506.cpp:19:58: error: expected primary-expression before ‘static’
+ static inline bool Function1(int Parm0, const char Parm1[static Parm0]) {
+                                                          ^~~~~~
+../DataSets/cfcode/code/34680506.cpp:19:58: error: expected ‘]’ before ‘static’
+../DataSets/cfcode/code/34680506.cpp:19:58: error: expected ‘)’ before ‘static’
+../DataSets/cfcode/code/34680506.cpp:19:58: error: expected initializer before ‘static’
+
+../DataSets/cfcode/code/13064483.cpp
+../DataSets/cfcode/code/13064483.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/13064483.cpp:11:41: error: ‘malloc’ was not declared in this scope
+     int *arr=(int *)malloc(sizeof(int)*n);
+                                         ^
+../DataSets/cfcode/code/13064483.cpp:15:33: error: ‘qsort’ was not declared in this scope
+     qsort(arr,n,sizeof(int),comp);
+                                 ^
+
+../DataSets/cfcode/code/13124827.cpp
+/tmp/ccpiMJcy.o: In function `main':
+/home/jho/re/re/script/../DataSets/cfcode/code/13124827.cpp:19:(.text+0xdb): relocation truncated to fit: R_X86_64_PC32 against symbol `Global1' defined in .bss section in /tmp/ccpiMJcy.o
+/home/jho/re/re/script/../DataSets/cfcode/code/13124827.cpp:27:(.text+0x13a): relocation truncated to fit: R_X86_64_PC32 against symbol `Global1' defined in .bss section in /tmp/ccpiMJcy.o
+collect2: error: ld returned 1 exit status
+
+../DataSets/cfcode/code/13064563.cpp
+../DataSets/cfcode/code/13064563.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/13064563.cpp:11:41: error: ‘malloc’ was not declared in this scope
+     int *arr=(int *)malloc(sizeof(int)*n);
+                                         ^
+../DataSets/cfcode/code/13064563.cpp:15:33: error: ‘qsort’ was not declared in this scope
+     qsort(arr,n,sizeof(int),comp);
+                                 ^
+
+../DataSets/cfcode/code/36370137.cpp
+/tmp/ccZtgeXh.o: In function `main':
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:53:(.text+0x8b): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:55:(.text+0xe7): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:56:(.text+0x115): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:77:(.text+0x282): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:97:(.text+0x363): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:98:(.text+0x391): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:104:(.text+0x405): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:111:(.text+0x484): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:113:(.text+0x4b3): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:132:(.text+0x5c3): relocation truncated to fit: R_X86_64_PC32 against `.bss'
+/home/jho/re/re/script/../DataSets/cfcode/code/36370137.cpp:135:(.text+0x616): additional relocation overflows omitted from the output
+collect2: error: ld returned 1 exit status
+
+../DataSets/cfcode/code/36017126.cpp
+../DataSets/cfcode/code/36017126.cpp:6:50: error: expected primary-expression before ‘static’
+ static void fill_cost(int D, int M, const char t[static M]) {
+                                                  ^~~~~~
+../DataSets/cfcode/code/36017126.cpp:6:50: error: expected ‘]’ before ‘static’
+../DataSets/cfcode/code/36017126.cpp:6:50: error: expected ‘)’ before ‘static’
+../DataSets/cfcode/code/36017126.cpp:6:50: error: expected initializer before ‘static’
+
+../DataSets/cfcode/code/36053693.cpp
+../DataSets/cfcode/code/36053693.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/36053693.cpp:8:34: error: invalid operands of types ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ and ‘int’ to binary ‘operator%’
+     if(abs((LocalVar1-LocalVar0))%2==0)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+
+../DataSets/cfcode/code/36053711.cpp
+../DataSets/cfcode/code/36053711.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/36053711.cpp:9:18: error: invalid operands of types ‘__gnu_cxx::__enable_if<true, double>::__type {aka double}’ and ‘int’ to binary ‘operator%’
+     if(abs((b-a))%2==0)
+        ~~~~~~~~~~^~
+
+../DataSets/cfcode/code/13064478.cpp
+../DataSets/cfcode/code/13064478.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/13064478.cpp:11:55: error: ‘malloc’ was not declared in this scope
+     int *LocalVar3=(int *)malloc(sizeof(int)*LocalVar0);
+                                                       ^
+../DataSets/cfcode/code/13064478.cpp:15:52: error: ‘qsort’ was not declared in this scope
+     qsort(LocalVar3,LocalVar0,sizeof(int),Function0);
+                                                    ^
+
+../DataSets/cfcode/code/35264206.cpp
+../DataSets/cfcode/code/35264206.cpp: In member function ‘double point::distance(point)’:
+../DataSets/cfcode/code/35264206.cpp:55:83: error: ‘Function0’ was not declared in this scope
+         return (double)Function0((double)(x-p2.x) * (x-p2.x) + (y-p2.y) * (y-p2.y));
+                                                                                   ^
+../DataSets/cfcode/code/35264206.cpp: In function ‘double dist(point, point)’:
+../DataSets/cfcode/code/35264206.cpp:91:96: error: ‘Function0’ was not declared in this scope
+     return (double) Function0 ( (double) (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) );
+                                                                                                ^
+../DataSets/cfcode/code/35264206.cpp: In function ‘void Intersectie(cerc, cerc)’:
+../DataSets/cfcode/code/35264206.cpp:111:55: error: ‘Function0’ was not declared in this scope
+     H = (double) Function0 ((double) a.R * a.R - A * A);
+                                                       ^
+
+../DataSets/cfcode/code/36548383.cpp
+../DataSets/cfcode/code/36548383.cpp: In function ‘int main()’:
+../DataSets/cfcode/code/36548383.cpp:11:17: error: call of overloaded ‘abs(float)’ is ambiguous
+     num1=abs(h/n);
+                 ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/36548383.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/36548383.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+../DataSets/cfcode/code/36548383.cpp:26:22: error: call of overloaded ‘abs(float)’ is ambiguous
+     num =abs(hunger/n);
+                      ^
+In file included from /usr/include/c++/6/cstdlib:75:0,
+                 from /usr/include/c++/6/stdlib.h:36,
+                 from ../DataSets/cfcode/code/36548383.cpp:2:
+/usr/include/stdlib.h:837:12: note: candidate: int abs(int)
+ extern int abs (int __x) __THROW __attribute__ ((__const__)) __wur;
+            ^~~
+In file included from /usr/include/c++/6/stdlib.h:36:0,
+                 from ../DataSets/cfcode/code/36548383.cpp:2:
+/usr/include/c++/6/cstdlib:180:3: note: candidate: long long int std::abs(long long int)
+   abs(long long __x) { return __builtin_llabs (__x); }
+   ^~~
+/usr/include/c++/6/cstdlib:172:3: note: candidate: long int std::abs(long int)
+   abs(long __i) { return __builtin_labs(__i); }
+   ^~~
+
+../DataSets/cfcode/code/35632041.cpp
+../DataSets/cfcode/code/35632041.cpp:3:28: error: use of parameter outside function body before ‘]’ token
+ int ifexist(int n,int arr[n],int s){
+                            ^
+../DataSets/cfcode/code/35632041.cpp:3:29: error: expected ‘)’ before ‘,’ token
+ int ifexist(int n,int arr[n],int s){
+                             ^
+../DataSets/cfcode/code/35632041.cpp:3:30: error: expected unqualified-id before ‘int’
+ int ifexist(int n,int arr[n],int s){
+                              ^~~
+
+../DataSets/cfcode/code/34681564.cpp
+../DataSets/cfcode/code/34681564.cpp:19:58: error: expected primary-expression before ‘static’
+ static inline bool Function1(int Parm0, const char Parm1[static Parm0]) {
+                                                          ^~~~~~
+../DataSets/cfcode/code/34681564.cpp:19:58: error: expected ‘]’ before ‘static’
+../DataSets/cfcode/code/34681564.cpp:19:58: error: expected ‘)’ before ‘static’
+../DataSets/cfcode/code/34681564.cpp:19:58: error: expected initializer before ‘static’
+
+../DataSets/cfcode/code/34682685.cpp
+../DataSets/cfcode/code/34682685.cpp:19:62: error: expected primary-expression before ‘static’
+ static inline bool is_balanced_naive(int len, const char str[static len]) {
+                                                              ^~~~~~
+../DataSets/cfcode/code/34682685.cpp:19:62: error: expected ‘]’ before ‘static’
+../DataSets/cfcode/code/34682685.cpp:19:62: error: expected ‘)’ before ‘static’
+../DataSets/cfcode/code/34682685.cpp:19:62: error: expected initializer before ‘static’
+

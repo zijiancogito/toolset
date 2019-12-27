@@ -1,0 +1,248 @@
+00000000000008d0 <Function0>:
+#include <math.h>
+#include <stdlib.h>
+#define MAX 10001
+int Global0[MAX],Global1[MAX];
+void Function0()
+{
+ 8d0:	55                   	push   %rbp
+ 8d1:	48 89 e5             	mov    %rsp,%rbp
+ 8d4:	48 83 ec 10          	sub    $0x10,%rsp
+    int LocalVar0,LocalVar1;
+    memset(Global0,0,sizeof(Global0));
+ 8d8:	ba 44 9c 00 00       	mov    $0x9c44,%edx
+ 8dd:	be 00 00 00 00       	mov    $0x0,%esi
+ 8e2:	48 8d 3d b7 b3 20 00 	lea    0x20b3b7(%rip),%rdi        # 20bca0 <Global0>
+ 8e9:	e8 72 fe ff ff       	callq  760 <memset@plt>
+    Global0[0]=Global0[1]=1;
+ 8ee:	c7 05 ac b3 20 00 01 	movl   $0x1,0x20b3ac(%rip)        # 20bca4 <Global0+0x4>
+ 8f5:	00 00 00 
+ 8f8:	8b 05 a6 b3 20 00    	mov    0x20b3a6(%rip),%eax        # 20bca4 <Global0+0x4>
+ 8fe:	89 05 9c b3 20 00    	mov    %eax,0x20b39c(%rip)        # 20bca0 <Global0>
+    for(LocalVar0=4;LocalVar0<=MAX;LocalVar0+=2)
+ 904:	c7 45 f8 04 00 00 00 	movl   $0x4,-0x8(%rbp)
+ 90b:	eb 1f                	jmp    92c <Function0+0x5c>
+        Global0[LocalVar0]=1;
+ 90d:	8b 45 f8             	mov    -0x8(%rbp),%eax
+ 910:	48 98                	cltq   
+ 912:	48 8d 14 85 00 00 00 	lea    0x0(,%rax,4),%rdx
+ 919:	00 
+ 91a:	48 8d 05 7f b3 20 00 	lea    0x20b37f(%rip),%rax        # 20bca0 <Global0>
+ 921:	c7 04 02 01 00 00 00 	movl   $0x1,(%rdx,%rax,1)
+    for(LocalVar0=4;LocalVar0<=MAX;LocalVar0+=2)
+ 928:	83 45 f8 02          	addl   $0x2,-0x8(%rbp)
+ 92c:	81 7d f8 11 27 00 00 	cmpl   $0x2711,-0x8(%rbp)
+ 933:	7e d8                	jle    90d <Function0+0x3d>
+    for(LocalVar0=3;LocalVar0<=sqrt(MAX);LocalVar0++){
+ 935:	c7 45 f8 03 00 00 00 	movl   $0x3,-0x8(%rbp)
+ 93c:	eb 3a                	jmp    978 <Function0+0xa8>
+        for(LocalVar1=LocalVar0*LocalVar0;LocalVar1<=MAX;LocalVar1+=LocalVar0)
+ 93e:	8b 45 f8             	mov    -0x8(%rbp),%eax
+ 941:	0f af 45 f8          	imul   -0x8(%rbp),%eax
+ 945:	89 45 fc             	mov    %eax,-0x4(%rbp)
+ 948:	eb 21                	jmp    96b <Function0+0x9b>
+            Global0[LocalVar1]=1;
+ 94a:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 94d:	48 98                	cltq   
+ 94f:	48 8d 14 85 00 00 00 	lea    0x0(,%rax,4),%rdx
+ 956:	00 
+ 957:	48 8d 05 42 b3 20 00 	lea    0x20b342(%rip),%rax        # 20bca0 <Global0>
+ 95e:	c7 04 02 01 00 00 00 	movl   $0x1,(%rdx,%rax,1)
+        for(LocalVar1=LocalVar0*LocalVar0;LocalVar1<=MAX;LocalVar1+=LocalVar0)
+ 965:	8b 45 f8             	mov    -0x8(%rbp),%eax
+ 968:	01 45 fc             	add    %eax,-0x4(%rbp)
+ 96b:	81 7d fc 11 27 00 00 	cmpl   $0x2711,-0x4(%rbp)
+ 972:	7e d6                	jle    94a <Function0+0x7a>
+    for(LocalVar0=3;LocalVar0<=sqrt(MAX);LocalVar0++){
+ 974:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+ 978:	66 0f ef c0          	pxor   %xmm0,%xmm0
+ 97c:	f2 0f 2a 45 f8       	cvtsi2sdl -0x8(%rbp),%xmm0
+ 981:	f2 0f 10 0d 8f 02 00 	movsd  0x28f(%rip),%xmm1        # c18 <_IO_stdin_used+0x18>
+ 988:	00 
+ 989:	66 0f 2e c8          	ucomisd %xmm0,%xmm1
+ 98d:	73 af                	jae    93e <Function0+0x6e>
+    }
+}
+ 98f:	90                   	nop
+ 990:	c9                   	leaveq 
+ 991:	c3                   	retq   
+
+0000000000000992 <Function1>:
+void Function1()
+{
+ 992:	55                   	push   %rbp
+ 993:	48 89 e5             	mov    %rsp,%rbp
+ 996:	48 83 ec 20          	sub    $0x20,%rsp
+    int LocalVar0,LocalVar1,LocalVar2,LocalVar3;
+    memset(Global1,0,sizeof(Global1));
+ 99a:	ba 44 9c 00 00       	mov    $0x9c44,%edx
+ 99f:	be 00 00 00 00       	mov    $0x0,%esi
+ 9a4:	48 8d 3d 95 16 20 00 	lea    0x201695(%rip),%rdi        # 202040 <Global1>
+ 9ab:	e8 b0 fd ff ff       	callq  760 <memset@plt>
+    for(LocalVar0=1;LocalVar0<=MAX;LocalVar0++){
+ 9b0:	c7 45 f0 01 00 00 00 	movl   $0x1,-0x10(%rbp)
+ 9b7:	e9 a2 00 00 00       	jmpq   a5e <Function1+0xcc>
+        LocalVar3=1;
+ 9bc:	c7 45 f8 01 00 00 00 	movl   $0x1,-0x8(%rbp)
+        for(LocalVar1=2;LocalVar1<=sqrt(LocalVar0);LocalVar1++){
+ 9c3:	c7 45 f4 02 00 00 00 	movl   $0x2,-0xc(%rbp)
+ 9ca:	eb 2b                	jmp    9f7 <Function1+0x65>
+            if(LocalVar0%LocalVar1==0){
+ 9cc:	8b 45 f0             	mov    -0x10(%rbp),%eax
+ 9cf:	99                   	cltd   
+ 9d0:	f7 7d f4             	idivl  -0xc(%rbp)
+ 9d3:	89 d0                	mov    %edx,%eax
+ 9d5:	85 c0                	test   %eax,%eax
+ 9d7:	75 1a                	jne    9f3 <Function1+0x61>
+                LocalVar3++;
+ 9d9:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+            LocalVar2=LocalVar0/LocalVar1;
+ 9dd:	8b 45 f0             	mov    -0x10(%rbp),%eax
+ 9e0:	99                   	cltd   
+ 9e1:	f7 7d f4             	idivl  -0xc(%rbp)
+ 9e4:	89 45 fc             	mov    %eax,-0x4(%rbp)
+            if(LocalVar2!=LocalVar1)
+ 9e7:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 9ea:	3b 45 f4             	cmp    -0xc(%rbp),%eax
+ 9ed:	74 04                	je     9f3 <Function1+0x61>
+                LocalVar3++;
+ 9ef:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+        for(LocalVar1=2;LocalVar1<=sqrt(LocalVar0);LocalVar1++){
+ 9f3:	83 45 f4 01          	addl   $0x1,-0xc(%rbp)
+ 9f7:	66 0f ef c9          	pxor   %xmm1,%xmm1
+ 9fb:	f2 0f 2a 4d f4       	cvtsi2sdl -0xc(%rbp),%xmm1
+ a00:	f2 0f 11 4d e8       	movsd  %xmm1,-0x18(%rbp)
+ a05:	66 0f ef c0          	pxor   %xmm0,%xmm0
+ a09:	f2 0f 2a 45 f0       	cvtsi2sdl -0x10(%rbp),%xmm0
+ a0e:	e8 6d fd ff ff       	callq  780 <sqrt@plt>
+ a13:	66 0f 2e 45 e8       	ucomisd -0x18(%rbp),%xmm0
+ a18:	73 b2                	jae    9cc <Function1+0x3a>
+            }
+        }
+        if(LocalVar0!=1)
+ a1a:	83 7d f0 01          	cmpl   $0x1,-0x10(%rbp)
+ a1e:	74 04                	je     a24 <Function1+0x92>
+            LocalVar3++;
+ a20:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+        if(Global0[LocalVar3]==0)
+ a24:	8b 45 f8             	mov    -0x8(%rbp),%eax
+ a27:	48 98                	cltq   
+ a29:	48 8d 14 85 00 00 00 	lea    0x0(,%rax,4),%rdx
+ a30:	00 
+ a31:	48 8d 05 68 b2 20 00 	lea    0x20b268(%rip),%rax        # 20bca0 <Global0>
+ a38:	8b 04 02             	mov    (%rdx,%rax,1),%eax
+ a3b:	85 c0                	test   %eax,%eax
+ a3d:	75 1b                	jne    a5a <Function1+0xc8>
+            Global1[LocalVar0]=1;
+ a3f:	8b 45 f0             	mov    -0x10(%rbp),%eax
+ a42:	48 98                	cltq   
+ a44:	48 8d 14 85 00 00 00 	lea    0x0(,%rax,4),%rdx
+ a4b:	00 
+ a4c:	48 8d 05 ed 15 20 00 	lea    0x2015ed(%rip),%rax        # 202040 <Global1>
+ a53:	c7 04 02 01 00 00 00 	movl   $0x1,(%rdx,%rax,1)
+    for(LocalVar0=1;LocalVar0<=MAX;LocalVar0++){
+ a5a:	83 45 f0 01          	addl   $0x1,-0x10(%rbp)
+ a5e:	81 7d f0 11 27 00 00 	cmpl   $0x2711,-0x10(%rbp)
+ a65:	0f 8e 51 ff ff ff    	jle    9bc <Function1+0x2a>
+    }
+}
+ a6b:	90                   	nop
+ a6c:	c9                   	leaveq 
+ a6d:	c3                   	retq   
+
+0000000000000a6e <main>:
+int main()
+{
+ a6e:	55                   	push   %rbp
+ a6f:	48 89 e5             	mov    %rsp,%rbp
+ a72:	48 83 ec 20          	sub    $0x20,%rsp
+ a76:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+ a7d:	00 00 
+ a7f:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+ a83:	31 c0                	xor    %eax,%eax
+    Function0();
+ a85:	b8 00 00 00 00       	mov    $0x0,%eax
+ a8a:	e8 41 fe ff ff       	callq  8d0 <Function0>
+    Function1();
+ a8f:	b8 00 00 00 00       	mov    $0x0,%eax
+ a94:	e8 f9 fe ff ff       	callq  992 <Function1>
+    int LocalVar0,LocalVar1,LocalVar2,LocalVar3,LocalVar4;
+    scanf("%d",&LocalVar0);
+ a99:	48 8d 45 e4          	lea    -0x1c(%rbp),%rax
+ a9d:	48 89 c6             	mov    %rax,%rsi
+ aa0:	48 8d 3d 61 01 00 00 	lea    0x161(%rip),%rdi        # c08 <_IO_stdin_used+0x8>
+ aa7:	b8 00 00 00 00       	mov    $0x0,%eax
+ aac:	e8 bf fc ff ff       	callq  770 <__isoc99_scanf@plt>
+    while(LocalVar0--){
+ ab1:	e9 9e 00 00 00       	jmpq   b54 <main+0xe6>
+        scanf("%d %d",&LocalVar2,&LocalVar3);
+ ab6:	48 8d 55 ec          	lea    -0x14(%rbp),%rdx
+ aba:	48 8d 45 e8          	lea    -0x18(%rbp),%rax
+ abe:	48 89 c6             	mov    %rax,%rsi
+ ac1:	48 8d 3d 43 01 00 00 	lea    0x143(%rip),%rdi        # c0b <_IO_stdin_used+0xb>
+ ac8:	b8 00 00 00 00       	mov    $0x0,%eax
+ acd:	e8 9e fc ff ff       	callq  770 <__isoc99_scanf@plt>
+        LocalVar4=0;
+ ad2:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%rbp)
+        for(LocalVar1=LocalVar2;LocalVar1<=LocalVar3;LocalVar1++){
+ ad9:	8b 45 e8             	mov    -0x18(%rbp),%eax
+ adc:	89 45 f0             	mov    %eax,-0x10(%rbp)
+ adf:	eb 4d                	jmp    b2e <main+0xc0>
+            if(Global1[LocalVar1]==1){
+ ae1:	8b 45 f0             	mov    -0x10(%rbp),%eax
+ ae4:	48 98                	cltq   
+ ae6:	48 8d 14 85 00 00 00 	lea    0x0(,%rax,4),%rdx
+ aed:	00 
+ aee:	48 8d 05 4b 15 20 00 	lea    0x20154b(%rip),%rax        # 202040 <Global1>
+ af5:	8b 04 02             	mov    (%rdx,%rax,1),%eax
+ af8:	83 f8 01             	cmp    $0x1,%eax
+ afb:	75 2d                	jne    b2a <main+0xbc>
+                if(LocalVar4==1)
+ afd:	83 7d f4 01          	cmpl   $0x1,-0xc(%rbp)
+ b01:	75 0a                	jne    b0d <main+0x9f>
+                    printf(" ");
+ b03:	bf 20 00 00 00       	mov    $0x20,%edi
+ b08:	e8 13 fc ff ff       	callq  720 <putchar@plt>
+                LocalVar4=1;
+ b0d:	c7 45 f4 01 00 00 00 	movl   $0x1,-0xc(%rbp)
+                printf("%d",LocalVar1);
+ b14:	8b 45 f0             	mov    -0x10(%rbp),%eax
+ b17:	89 c6                	mov    %eax,%esi
+ b19:	48 8d 3d e8 00 00 00 	lea    0xe8(%rip),%rdi        # c08 <_IO_stdin_used+0x8>
+ b20:	b8 00 00 00 00       	mov    $0x0,%eax
+ b25:	e8 26 fc ff ff       	callq  750 <printf@plt>
+        for(LocalVar1=LocalVar2;LocalVar1<=LocalVar3;LocalVar1++){
+ b2a:	83 45 f0 01          	addl   $0x1,-0x10(%rbp)
+ b2e:	8b 45 ec             	mov    -0x14(%rbp),%eax
+ b31:	39 45 f0             	cmp    %eax,-0x10(%rbp)
+ b34:	7e ab                	jle    ae1 <main+0x73>
+            }
+        }
+        if(LocalVar4==0)
+ b36:	83 7d f4 00          	cmpl   $0x0,-0xc(%rbp)
+ b3a:	75 0e                	jne    b4a <main+0xdc>
+            printf("-1\n");
+ b3c:	48 8d 3d ce 00 00 00 	lea    0xce(%rip),%rdi        # c11 <_IO_stdin_used+0x11>
+ b43:	e8 e8 fb ff ff       	callq  730 <puts@plt>
+ b48:	eb 0a                	jmp    b54 <main+0xe6>
+        else
+            printf("\n");
+ b4a:	bf 0a 00 00 00       	mov    $0xa,%edi
+ b4f:	e8 cc fb ff ff       	callq  720 <putchar@plt>
+    while(LocalVar0--){
+ b54:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+ b57:	8d 50 ff             	lea    -0x1(%rax),%edx
+ b5a:	89 55 e4             	mov    %edx,-0x1c(%rbp)
+ b5d:	85 c0                	test   %eax,%eax
+ b5f:	0f 85 51 ff ff ff    	jne    ab6 <main+0x48>
+    }
+    return 0;
+ b65:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+ b6a:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+ b6e:	64 48 33 0c 25 28 00 	xor    %fs:0x28,%rcx
+ b75:	00 00 
+ b77:	74 05                	je     b7e <main+0x110>
+ b79:	e8 c2 fb ff ff       	callq  740 <__stack_chk_fail@plt>
+ b7e:	c9                   	leaveq 
+ b7f:	c3                   	retq   

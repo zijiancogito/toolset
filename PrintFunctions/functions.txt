@@ -1,0 +1,786 @@
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/countOfSmallerNumbersAfterSelf/countOfSmallerNumbersAfterSelf.cpp
+function-decl: Solution::search search
+function-decl: Solution::compute compute
+function-decl: Solution::add add
+function-decl: Solution::countSmaller countSmaller
+function-decl: BinarySearchTreeNode::BinarySearchTreeNode BinarySearchTreeNode
+function-decl: BinarySearchTree::BinarySearchTree BinarySearchTree
+function-decl: BinarySearchTree::~BinarySearchTree ~BinarySearchTree
+function-decl: BinarySearchTree::insert insert
+function-decl: BinarySearchTree::freeTree freeTree
+function-decl: BinarySearchTree::insert insert
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/rectangleArea/RectangleArea.cpp
+function-decl: leetcode::Point::Point Point
+function-decl: leetcode::Rectangle::Rectangle Rectangle
+function-decl: leetcode::Rectangle::Area Area
+function-decl: leetcode::Rectangle::InclusiveArea InclusiveArea
+function-decl: leetcode::Rectangle::OverlappedArea OverlappedArea
+function-decl: computeArea computeArea
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/maximalSquare/MaximalSquare.cpp
+function-decl: Solution::min min
+function-decl: Solution::min min
+function-decl: Solution::maximalSquare maximalSquare
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/timeBasedKeyValueStore/TimeBasedKeyValueStore.cpp
+function-decl: TimeMap::TimeMap TimeMap
+function-decl: TimeMap::set set
+function-decl: TimeMap::get get
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/addAndSearchWord/AddAndSearchWord.cpp
+function-decl: TrieNode::TrieNode TrieNode
+function-decl: TrieNode::operator[] operator[]
+function-decl: TrieNode::operator[] operator[]
+function-decl: TrieTree::TrieTree TrieTree
+function-decl: TrieTree::~TrieTree ~TrieTree
+function-decl: TrieTree::put put
+function-decl: TrieTree::search search
+function-decl: TrieTree::get get
+function-decl: TrieTree::freeTree freeTree
+function-decl: WordDictionary::addWord addWord
+function-decl: WordDictionary::search search
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/cousinsInBinaryTree/CousinsInBinaryTree.cpp
+function-decl: Solution::isCousins isCousins
+function-decl: Solution::DepthAndParent DepthAndParent
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/binaryTreeLevelOrderTraversal/binaryTreeLevelOrderTraversal.cpp
+function-decl: TreeNode::TreeNode TreeNode
+function-decl: levelOrder1 levelOrder1
+function-decl: levelOrder2 levelOrder2
+function-decl: levelOrder3 levelOrder3
+function-decl: levelOrder levelOrder
+function-decl: levelOrder1 levelOrder1
+function-decl: levelOrder2 levelOrder2
+function-decl: levelOrder3 levelOrder3
+function-decl: printTree printTree
+function-decl: printTree_level_order printTree_level_order
+function-decl: createTree createTree
+function-decl: printMatrix printMatrix
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/binaryTreeLevelOrderTraversal/binaryTreeLevelOrderTraversal.II.cpp
+function-decl: Solution::levelOrderBottom levelOrderBottom
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/removeDuplicatesFromSortedList/removeDuplicatesFromSortedList.cpp
+function-decl: ListNode::ListNode ListNode
+function-decl: deleteDuplicates deleteDuplicates
+function-decl: printList printList
+function-decl: createList createList
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/removeDuplicatesFromSortedList/removeDuplicatesFromSortedList.II.cpp
+function-decl: ListNode::ListNode ListNode
+function-decl: deleteDuplicates deleteDuplicates
+function-decl: printList printList
+function-decl: createList createList
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/searchForRange/searchForRange.cpp
+function-decl: binary_search binary_search
+function-decl: searchRange searchRange
+function-decl: binary_search binary_search
+function-decl: printVector printVector
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/removeElement/removeElement.cpp
+function-decl: Solution::removeElement removeElement
+function-decl: Solution::removeElement removeElement
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/firstBadVersion/FirstBadVersion.cpp
+function-decl: isBadVersion isBadVersion
+function-decl: Solution::firstBadVersion firstBadVersion
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bestTimeToBuyAndSellStock/bestTimeToBuyAndSellStock.II.cpp
+function-decl: Solution::maxProfit maxProfit
+function-decl: Solution::maxProfit01 maxProfit01
+function-decl: Solution::maxProfit02 maxProfit02
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bestTimeToBuyAndSellStock/bestTimeToBuyAndSellStock.cpp
+function-decl: Solution::maxProfit maxProfit
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bestTimeToBuyAndSellStock/bestTimeToBuyAndSellStock.III.cpp
+function-decl: Solution::maxProfit maxProfit
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bestTimeToBuyAndSellStock/bestTimeToBuyAndSellStock.IV.cpp
+function-decl: Solution::maxProfit maxProfit
+function-decl: Solution::maxProfit_DP01 maxProfit_DP01
+function-decl: Solution::maxProfit_DP02 maxProfit_DP02
+function-decl: Solution::maxProfit_DP03 maxProfit_DP03
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bestTimeToBuyAndSellStock/BestTimeToBuyAndSellStockWithTransactionFee.cpp
+function-decl: Solution::max max
+function-decl: Solution::max max
+function-decl: Solution::maxProfit maxProfit
+function-decl: Solution::genPricesPairs genPricesPairs
+function-decl: Solution::maxProfit_dp01 maxProfit_dp01
+function-decl: Solution::maxProfit_dp02 maxProfit_dp02
+function-decl: Solution::maxProfit_dp03 maxProfit_dp03
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bestTimeToBuyAndSellStock/BestTimeToBuyAndSellStockWithCooldown.cpp
+function-decl: Solution::maxProfit maxProfit
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/convertSortedListToBinarySearchTree/convertSortedListToBinarySearchTree.cpp
+function-decl: ListNode::ListNode ListNode
+function-decl: TreeNode::TreeNode TreeNode
+function-decl: sortedListToBST sortedListToBST
+function-decl: sortedListToBST sortedListToBST
+function-decl: sortedListToBST sortedListToBST
+function-decl: printTree_level_order printTree_level_order
+function-decl: createList createList
+function-decl: printList printList
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/trappingRainWater/trappingRainWater.cpp
+function-decl: trap trap
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/powerOfFour/PowerOfFour.cpp
+function-decl: Solution::isPowerOfFour isPowerOfFour
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/smallestStringStartingFromLeaf/SmallestStringStartingFromLeaf.cpp
+function-decl: Solution::smallestFromLeaf smallestFromLeaf
+function-decl: Solution::smallestFromLeafHelper smallestFromLeafHelper
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/mergeTwoSortedList/mergeTwoSortedList.cpp
+function-decl: Solution::Solution Solution
+function-decl: Solution::mergeTwoLists mergeTwoLists
+function-decl: Solution::mergeTwoLists01 mergeTwoLists01
+function-decl: Solution::mergeTwoLists02 mergeTwoLists02
+function-decl: Solution::mergeTheRest mergeTheRest
+function-decl: Solution::mergeTwoLists03 mergeTwoLists03
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/binarySearchTreeIterator/binarySearchTreeIterator.cpp
+function-decl: BSTIterator::BSTIterator BSTIterator
+function-decl: BSTIterator::hasNext hasNext
+function-decl: BSTIterator::next next
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/excelSheetColumnTitle/excelSheetColumnTitle.cpp
+function-decl: base26_int2str base26_int2str
+function-decl: base26_str2int base26_str2int
+function-decl: convertToTitle convertToTitle
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/mostCommonWord/MostCommonWord.cpp
+function-decl: Solution::isLetter isLetter
+function-decl: Solution::mostCommonWord mostCommonWord
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/largestPerimeterTriangle/largestPerimeterTriangle.cpp
+function-decl: Solution::largestPerimeter largestPerimeter
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/accountsMerge/AccountsMerge.cpp
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/palindromicSubstrings/PalindromicSubstrings.cpp
+function-decl: Solution::countSubstrings countSubstrings
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/pathSum/pathSum.cpp
+function-decl: Solution::Solution Solution
+function-decl: Solution::hasPathSum hasPathSum
+function-decl: Solution::hasPathSum3 hasPathSum3
+function-decl: Solution::hasPathSum1 hasPathSum1
+function-decl: Solution::hasPathSum2 hasPathSum2
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/pathSum/pathSum.II.cpp
+function-decl: Solution::pathSum pathSum
+function-decl: Solution::generatePathSum generatePathSum
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/peekingIterator/PeekingIterator.cpp
+function-decl: PeekingIterator::takeNext takeNext
+function-decl: PeekingIterator::PeekingIterator PeekingIterator
+function-decl: PeekingIterator::peek peek
+function-decl: PeekingIterator::next next
+function-decl: PeekingIterator::hasNext hasNext
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/shortestPalindrome/ShortestPalindrome.cpp
+function-decl: isPalindrome isPalindrome
+function-decl: shortestPalindrome_bf shortestPalindrome_bf
+function-decl: shortestPalindrome_dp shortestPalindrome_dp
+function-decl: shortestPalindrome_kmp shortestPalindrome_kmp
+function-decl: shortestPalindrome shortestPalindrome
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/serializeAndDeserializeBinaryTree/SerializeAndDeserializeBinaryTree.cpp
+function-decl: TreeNode::TreeNode TreeNode
+function-decl: Codec::serialize serialize
+function-decl: Codec::deserialize deserialize
+function-decl: Codec::serialize01 serialize01
+function-decl: Codec::deserialize01 deserialize01
+function-decl: Codec::serializeHelper serializeHelper
+function-decl: Codec::deserializeHelper deserializeHelper
+function-decl: Codec::split split
+function-decl: Codec::serialize02 serialize02
+function-decl: Codec::deserialize02 deserialize02
+function-decl: Codec::serialize serialize
+function-decl: Codec::deserialize deserialize
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/containerWithMostWater/containerWithMostWater.cpp
+function-decl: Solution::maxArea maxArea
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/repeatedDNASequences/repeatedDNASequences.cpp
+function-decl: ACGT2Int ACGT2Int
+function-decl: DNASeqs2Int DNASeqs2Int
+function-decl: findRepeatedDnaSequences_01 findRepeatedDnaSequences_01
+function-decl: findRepeatedDnaSequences_02 findRepeatedDnaSequences_02
+function-decl: findRepeatedDnaSequences findRepeatedDnaSequences
+function-decl: printVector printVector
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/grayCode/grayCode.cpp
+function-decl: grayCode01 grayCode01
+function-decl: grayCode02 grayCode02
+function-decl: grayCode grayCode
+function-decl: printBits printBits
+function-decl: printVector printVector
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/mergeIntervals/mergeIntervals.cpp
+function-decl: Interval::Interval Interval
+function-decl: Interval::Interval Interval
+function-decl: compare compare
+function-decl: merge merge
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/restoreIPAddresses/restoreIPAddresses.cpp
+function-decl: restoreIpAddressesHelper restoreIpAddressesHelper
+function-decl: restoreIpAddresses restoreIpAddresses
+function-decl: restoreIpAddressesHelper restoreIpAddressesHelper
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/mergeKSortedLists/mergeKSortedLists.cpp
+function-decl: ListNode::ListNode ListNode
+function-decl: mergeTwoLists mergeTwoLists
+function-decl: mergeTwoLists01 mergeTwoLists01
+function-decl: mergeTwoLists02 mergeTwoLists02
+function-decl: mergeKLists mergeKLists
+function-decl: mergeTwoLists mergeTwoLists
+function-decl: mergeTwoLists01 mergeTwoLists01
+function-decl: TakeOutNode TakeOutNode
+function-decl: mergeTwoLists02 mergeTwoLists02
+function-decl: TakeOutNode TakeOutNode
+function-decl: printList printList
+function-decl: createList createList
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/pow/pow.cpp
+function-decl: pow pow
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/validPalindrome/validPalindrome.cpp
+function-decl: Solution::isPalindrome isPalindrome
+function-decl: Solution::removeNoise removeNoise
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/longestPalindromicSubstring/longestPalindromicSubstring.cpp
+function-decl: findPalindrome findPalindrome
+function-decl: longestPalindrome_recursive_way longestPalindrome_recursive_way
+function-decl: findPalindrome findPalindrome
+function-decl: longestPalindrome_recursive_way2 longestPalindrome_recursive_way2
+function-decl: longestPalindrome_dp_way longestPalindrome_dp_way
+function-decl: longestPalindrome_dp_opt_way longestPalindrome_dp_opt_way
+function-decl: longestPalindrome longestPalindrome
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/slidingWindowMaximum/SlidingWindowMaximum.cpp
+function-decl: maxSlidingWindow02 maxSlidingWindow02
+function-decl: maxSlidingWindow01 maxSlidingWindow01
+function-decl: maxSlidingWindow maxSlidingWindow
+function-decl: printVector printVector
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/textJustification/textJustification.cpp
+function-decl: fullJustify fullJustify
+function-decl: printVector printVector
+function-decl: test test
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/3SumClosest/3SumClosest.cpp
+function-decl: threeSumClosest threeSumClosest
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/combinations/combinations.cpp
+function-decl: getCombination getCombination
+function-decl: combine1 combine1
+function-decl: combine2 combine2
+function-decl: combine combine
+function-decl: combine1 combine1
+function-decl: getCombination getCombination
+function-decl: combine2 combine2
+function-decl: printResult printResult
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/reverseString/ReverseString.cpp
+function-decl: Solution::reverseString reverseString
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/perfectSquares/PerfectSquares.cpp
+function-decl: Solution::numSquares numSquares
+function-decl: Solution::numSquares_dp numSquares_dp
+function-decl: Solution::numSquares_dp_opt numSquares_dp_opt
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/longestTurbulentSubarray/LongestTurbulentSubarray.cpp
+function-decl: Solution::maxTurbulenceSize_01 maxTurbulenceSize_01
+function-decl: Solution::maxTurbulenceSize_02 maxTurbulenceSize_02
+function-decl: Solution::maxTurbulenceSize maxTurbulenceSize
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/maximalRectangle/maximalRectangle.cpp
+function-decl: largestRectangleArea largestRectangleArea
+function-decl: maximalRectangle maximalRectangle
+function-decl: printArray printArray
+function-decl: test test
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/longestCommonPrefix/longestCommonPrefix.cpp
+function-decl: longestCommonPrefix longestCommonPrefix
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/intervalListIntersectons/IntervalListIntersections.cpp
+function-decl: Solution::compareInterval compareInterval
+function-decl: Solution::overlapped overlapped
+function-decl: Solution::mergeTwoInterval mergeTwoInterval
+function-decl: Solution::intervalIntersection intervalIntersection
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/binaryTreeRightSideView/binaryTreeRightSideView.cpp
+function-decl: Solution::rightSideViewHelper rightSideViewHelper
+function-decl: Solution::rightSideViewHelper rightSideViewHelper
+function-decl: Solution::rightSideView rightSideView
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/implementTriePrefixTree/ImplementTriePrefixTree.cpp
+function-decl: TrieNode::TrieNode TrieNode
+function-decl: Trie::Trie Trie
+function-decl: Trie::insert insert
+function-decl: Trie::search search
+function-decl: Trie::startsWith startsWith
+function-decl: Trie::retrieve retrieve
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/stringWithoutAAAOrBBB/StringWithoutAAAOrBBB.cpp
+function-decl: Solution::strWithout3a3b strWithout3a3b
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/binaryTreePaths/binaryTreePaths.cpp
+function-decl: Solution::DFS DFS
+function-decl: Solution::binaryTreePaths binaryTreePaths
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/surroundedRegions/surroundedRegions.cpp
+function-decl: print print
+function-decl: markOpen markOpen
+function-decl: solve_recursively solve_recursively
+function-decl: position::set set
+function-decl: position::position position
+function-decl: solve_non_recursively solve_non_recursively
+function-decl: UnionFind::UnionFind UnionFind
+function-decl: UnionFind::~UnionFind ~UnionFind
+function-decl: UnionFind::count count
+function-decl: UnionFind::find find
+function-decl: UnionFind::connected connected
+function-decl: UnionFind::connect connect
+function-decl: Solution::solve solve
+function-decl: solve solve
+function-decl: construct construct
+function-decl: print print
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/productOfArrayExceptSelf/ProductOfArrayExceptSelf.cpp
+function-decl: Solution::productExceptSelf productExceptSelf
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/decodeString/DecodeString.cpp
+function-decl: Solution::decodeString decodeString
+function-decl: Solution::isValid isValid
+function-decl: Solution::isNum isNum
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/verifyPreorderSerializationOfABinaryTree/VerifyPreorderSerializationOfABinaryTree.cpp
+function-decl: Solution::isValidSerialization isValidSerialization
+function-decl: Solution::split split
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/wordSearch/wordSearch.cpp
+function-decl: exist exist
+function-decl: exist exist
+function-decl: buildBoard buildBoard
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/wordSearch/wordSearch.II.cpp
+function-decl: TrieNode::TrieNode TrieNode
+function-decl: TrieNode::operator[] operator[]
+function-decl: TrieNode::operator[] operator[]
+function-decl: TrieTree::TrieTree TrieTree
+function-decl: TrieTree::~TrieTree ~TrieTree
+function-decl: TrieTree::getRoot getRoot
+function-decl: TrieTree::addWord addWord
+function-decl: TrieTree::freeTree freeTree
+function-decl: Solution::findWords findWords
+function-decl: Solution::findWords findWords
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/insertDeleteGetRandom/InsertDeleteGetrandomO1.cpp
+function-decl: RandomizedSet::RandomizedSet RandomizedSet
+function-decl: RandomizedSet::insert insert
+function-decl: RandomizedSet::remove remove
+function-decl: RandomizedSet::getRandom getRandom
+function-decl: RandomizedSet::find find
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/insertDeleteGetRandom/InsertDeleteGetrandomO1DuplicatesAllowed.cpp
+function-decl: RandomizedCollection::RandomizedCollection RandomizedCollection
+function-decl: RandomizedCollection::insert insert
+function-decl: RandomizedCollection::remove remove
+function-decl: RandomizedCollection::getRandom getRandom
+function-decl: RandomizedCollection::find find
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/longestSubstringWithAtMostTwoDistinctCharacters/longestSubstringWithAtMostTwoDistinctCharacters.cpp
+function-decl: lengthOfLongestSubstringTwoDistinct lengthOfLongestSubstringTwoDistinct
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/totalHammingDistance/totalHammingDistance.cpp
+function-decl: Solution::totalHammingDistance totalHammingDistance
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/minimumWindowSubstring/minimumWindowSubstring.cpp
+function-decl: minWindow minWindow
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/sumRootToLeafNumber/sumRootToLeafNumber.cpp
+function-decl: Solution::sumNumbers sumNumbers
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/lowestCommonAncestorOfABinaryTree/LowestCommonAncestorOfABinaryTree.cpp
+function-decl: Solution::findPath findPath
+function-decl: Solution::lowestCommonAncestor01 lowestCommonAncestor01
+function-decl: Solution::lowestCommonAncestor02 lowestCommonAncestor02
+function-decl: Solution::lowestCommonAncestor lowestCommonAncestor
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/interleavingString/interleavingString.cpp
+function-decl: isInterleave isInterleave
+function-decl: isInterleave_dfs isInterleave_dfs
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/longestAbsoluteFilePath/LongestAbsoluteFilePath.cpp
+function-decl: Solution::lengthLongestPath lengthLongestPath
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/validSudoku/validSudoku.cpp
+function-decl: Solution::isValidSudoku isValidSudoku
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/jumpGame/jumpGame.cpp
+function-decl: Solution::canJump canJump
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/jumpGame/jumpGame.II.cpp
+function-decl: jump jump
+function-decl: printArray printArray
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/binaryTreeInorderTraversal/binaryTreeInorderTraversal.cpp
+function-decl: Solution::inorderTraversal inorderTraversal
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/ransomNote/RansomNote.cpp
+function-decl: Solution::canConstruct canConstruct
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/validNumber/validNumber.cpp
+function-decl: isdigit isdigit
+function-decl: isspace isspace
+function-decl: isNumber isNumber
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/countOfRangeSum/CountOfRangeSum.cpp
+function-decl: Node::Node Node
+function-decl: Tree::Tree Tree
+function-decl: Tree::~Tree ~Tree
+function-decl: Tree::Insert Insert
+function-decl: Tree::LessThan LessThan
+function-decl: Tree::Insert Insert
+function-decl: Tree::LessThan LessThan
+function-decl: Tree::freeTree freeTree
+function-decl: Solution::countRangeSum countRangeSum
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/perfectRectangle/PerfectRectangle.cpp
+function-decl: Solution::isRectangleCover isRectangleCover
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/uniqueMorseCodeWords/UniqueMorseCodeWords.cpp
+function-decl: Solution::uniqueMorseRepresentations uniqueMorseRepresentations
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/evaluateReversePolishNotation/evaluateReversePolishNotation.cpp
+function-decl: Solution::evalRPN evalRPN
+function-decl: Solution::isOp isOp
+function-decl: Solution::isNum isNum
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/gasStation/gasStation.cpp
+function-decl: Solution::canCompleteCircuit canCompleteCircuit
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/numberOfIslands/NumberOfIslands.cpp
+function-decl: mark mark
+function-decl: numIslands numIslands
+function-decl: initGrid initGrid
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/binaryTreeUpsideDown/binaryTreeUpsideDown.cpp
+function-decl: Solution::upsideDownBinaryTree upsideDownBinaryTree
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/jewelsAndStones/JewelsAndStones.cpp
+function-decl: Solution::numJewelsInStones numJewelsInStones
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/minimumSizeSubarraySum/MinimumSizeSubarraySum.cpp
+function-decl: Solution::minSubArrayLen minSubArrayLen
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/findMedianFromDataStream/FindMedianFromDataStream.cpp
+function-decl: MedianFinder::addNum addNum
+function-decl: MedianFinder::findMedian findMedian
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/distinctSubsequences/distinctSubsequences.cpp
+function-decl: numDistinct1 numDistinct1
+function-decl: numDistinct2 numDistinct2
+function-decl: numDistinct numDistinct
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/reorderList/reorderList.cpp
+function-decl: ListNode::ListNode ListNode
+function-decl: ListNode::ListNode ListNode
+function-decl: Solution::reorderList reorderList
+function-decl: Solution::findMidPos findMidPos
+function-decl: Solution::reverseList reverseList
+function-decl: Solution::Merge Merge
+function-decl: printList printList
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bulbSwitcher/bulbSwitcher.cpp
+function-decl: Solution::bulbSwitch bulbSwitch
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/regularExpressionMatching/regularExpressionMatching.cpp
+function-decl: isMatch isMatch
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/missingRanges/missingRanges.cpp
+function-decl: makeRange makeRange
+function-decl: findMissingRanges findMissingRanges
+function-decl: printVector printVector
+function-decl: string2Array string2Array
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/combinationSumIV/combinationSumIV.cpp
+function-decl: Solution::combinationSum4 combinationSum4
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/invertBinaryTree/InvertBinaryTree.cpp
+function-decl: Solution::invertTree_recursive invertTree_recursive
+function-decl: Solution::invertTree_non_recursive invertTree_non_recursive
+function-decl: Solution::invertTree invertTree
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/linkedListCycle/linkedListCycle.II.cpp
+function-decl: Solution::hasCycle hasCycle
+function-decl: Solution::detectCycle detectCycle
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/linkedListCycle/linkedListCycle.cpp
+function-decl: Solution::hasCycle hasCycle
+function-decl: Solution::hasCycle01 hasCycle01
+function-decl: Solution::hasCycle02 hasCycle02
+function-decl: Solution::hasCycle03 hasCycle03
+function-decl: Solution::hasCycle04 hasCycle04
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/validateBinarySearchTree/validateBinarySearchTree.cpp
+function-decl: TreeNode::TreeNode TreeNode
+function-decl: isValidBST isValidBST
+function-decl: createTree createTree
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/zigZagConversion/zigZagConversion.cpp
+function-decl: convert convert
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/minimumCostForTickets/MinimumCostForTickets.cpp
+function-decl: Solution::min min
+function-decl: Solution::min min
+function-decl: Solution::mincostTickets mincostTickets
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/factorialTrailingZeroes/factorialTrailingZeroes.cpp
+function-decl: Solution::trailingZeroes trailingZeroes
+function-decl: Solution::trailingZeroes trailingZeroes
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/reverseLinkedList/reverseLinkedList.cpp
+function-decl: Solution::reverseList_iteratively reverseList_iteratively
+function-decl: Solution::reverseList_recursively reverseList_recursively
+function-decl: Solution::reverseList reverseList
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/reverseLinkedList/reverseLinkedList.II.cpp
+function-decl: ListNode::ListNode ListNode
+function-decl: reverseBetween reverseBetween
+function-decl: printList printList
+function-decl: createList createList
+function-decl: createList createList
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/numberOf1Bits/numberOf1Bits.cpp
+function-decl: Solution::hammingWeight hammingWeight
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/sumOfLeftLeaves/SumOfLeftLeaves.cpp
+function-decl: Solution::sumOfLeftLeaves_recursion_v1 sumOfLeftLeaves_recursion_v1
+function-decl: Solution::sumOfLeftLeaves_recursion_v2 sumOfLeftLeaves_recursion_v2
+function-decl: Solution::sumOfLeftLeaves sumOfLeftLeaves
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/theSkylineProblem/TheSkylineProblem.cpp
+function-decl: Solution::getSkyline getSkyline
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/search2DMatrix/search2DMatrix.II.cpp
+function-decl: Solution::binary_search binary_search
+function-decl: Solution::searchMatrix01 searchMatrix01
+function-decl: Solution::searchMatrix02 searchMatrix02
+function-decl: Solution::searchMatrix021 searchMatrix021
+function-decl: Solution::searchMatrix022 searchMatrix022
+function-decl: Solution::searchMatrix searchMatrix
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/search2DMatrix/search2DMatrix.cpp
+function-decl: Solution::searchMatrix searchMatrix
+function-decl: Solution::searchMatrix01 searchMatrix01
+function-decl: Solution::searchMatrix02 searchMatrix02
+function-decl: Solution::vertical_binary_search vertical_binary_search
+function-decl: Solution::binary_search binary_search
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/brokenCalculator/BrokenCalculator.cpp
+function-decl: Solution::brokenCalc brokenCalc
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/miniParser/MiniParser.cpp
+function-decl: Solution::deserialize deserialize
+function-decl: Solution::helper helper
+function-decl: Solution::atoni atoni
+function-decl: Solution::isnum isnum
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/convertSortedArrayToBinarySearchTree/convertSortedArrayToBinarySearchTree.cpp
+function-decl: Solution::sortedArrayToBST sortedArrayToBST
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/satisfiabilityOfEqualityEquations/SatisfiabilityOfEqualityEquations.cpp
+function-decl: Solution::init init
+function-decl: Solution::Solution Solution
+function-decl: Solution::find find
+function-decl: Solution::join join
+function-decl: Solution::equationsPossible equationsPossible
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/topKFrequentElements/topKFrequentElements.cpp
+function-decl: Solution::element::operator< operator<
+function-decl: Solution::topKFrequent topKFrequent
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/sortList/sortList.cpp
+function-decl: ListNode::ListNode ListNode
+function-decl: mergeTwoLists mergeTwoLists
+function-decl: sortList sortList
+function-decl: mergeTwoLists mergeTwoLists
+function-decl: printList printList
+function-decl: createList createList
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/squaresOfASortedArray/SquaresOfASortedArray.cpp
+function-decl: Solution::sortedSquares sortedSquares
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/convertANumberToHexadecimal/ConvertANumberToHexadecimal.cpp
+function-decl: Solution::toHex toHex
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/arithmeticSlices/ArithmeticSlices.cpp
+function-decl: Solution::sum1toN sum1toN
+function-decl: Solution::numberOfArithmeticSlices numberOfArithmeticSlices
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/moveZeroes/moveZeroes.cpp
+function-decl: Solution::moveZeroes moveZeroes
+function-decl: Solution::moveZeroes moveZeroes
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/findPeakElement/findPeakElement.cpp
+function-decl: findPeakElement findPeakElement
+function-decl: printVector printVector
+function-decl: test test
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/bullsAndCows/bullsAndCows.cpp
+function-decl: Solution::getHint getHint
+function-decl: Solution::getHint01 getHint01
+function-decl: Solution::getHint02 getHint02
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/countNumbersWithUniqueDigits/CountNumbersWithUniqueDigits.cpp
+function-decl: Solution::countNumbersWithUniqueDigits countNumbersWithUniqueDigits
+function-decl: Solution::nine_factor nine_factor
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/minStack/minStack.cpp
+function-decl: Stack::Stack<T> Stack<T>
+function-decl: Stack::~Stack<T> ~Stack<T>
+function-decl: Stack::push push
+function-decl: Stack::pop pop
+function-decl: Stack::top top
+function-decl: Stack::empty empty
+function-decl: Stack::size size
+function-decl: Stack::clear clear
+function-decl: MinStack::minData::minData minData
+function-decl: MinStack::minData::minData minData
+function-decl: MinStack::push push
+function-decl: MinStack::pop pop
+function-decl: MinStack::top top
+function-decl: MinStack::getMin getMin
+function-decl: MinStack::clear clear
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/flattenBinaryTreeToLinkedList/flattenBinaryTreeToLinkedList.cpp
+function-decl: Solution::flatten flatten
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/recoverATreeFromPreorderTraversal/recoverATreeFromPreorderTraversal.cpp
+function-decl: Solution::recoverFromPreorder recoverFromPreorder
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/nextPermutation/nextPermutation.cpp
+function-decl: nextPermutation nextPermutation
+function-decl: printVector printVector
+function-decl: isBeginVector isBeginVector
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/rangeSumQuery-Immutable/rangeSumQuery-Mutable/RangeSumQueryMutable.cpp
+function-decl: update update
+function-decl: sumRange sumRange
+function-decl: sumRange sumRange
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/rangeSumQuery-Immutable/rangeSumQuery-Immutable.cpp
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/4Sum/4Sum.cpp
+function-decl: threeSum threeSum
+function-decl: fourSum fourSum
+function-decl: threeSum threeSum
+function-decl: printMatrix printMatrix
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/pascalTriangle/pascalTriangle.cpp
+function-decl: generate generate
+function-decl: printTriangle printTriangle
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/pascalTriangle/pascalTriangle.II.cpp
+function-decl: getRow getRow
+function-decl: printVector printVector
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/eliminationGame/EliminationGame.cpp
+function-decl: Solution::lastRemaining lastRemaining
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/isSubsequence/IsSubsequence.cpp
+function-decl: Solution::isSubsequence isSubsequence
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/powerOfThree/PowerOfThree.cpp
+function-decl: Solution::isPowerOfThree isPowerOfThree
+function-decl: Solution::isPowerOfThree03 isPowerOfThree03
+function-decl: Solution::isPowerOfThree02 isPowerOfThree02
+function-decl: Solution::init init
+function-decl: Solution::isPowerOfThree01 isPowerOfThree01
+function-decl: Solution::isPowerOfThree_loop isPowerOfThree_loop
+function-decl: Solution::isPowerOfThree_recursive isPowerOfThree_recursive
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/uniqueBinarySearchTrees/uniqueBinarySearchTrees.II.cpp
+function-decl: TreeNode::TreeNode TreeNode
+function-decl: generateTrees generateTrees
+function-decl: generateTrees generateTrees
+function-decl: generateTrees generateTrees
+function-decl: printTree printTree
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/uniqueBinarySearchTrees/uniqueBinarySearchTrees.cpp
+function-decl: numTrees1 numTrees1
+function-decl: numTrees2 numTrees2
+function-decl: numTrees numTrees
+function-decl: numTrees1 numTrees1
+function-decl: numTrees2 numTrees2
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/deleteNodeInALinkedList/DeleteNodeInALinkedList.cpp
+function-decl: Solution::deleteNode deleteNode
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/triangle/triangle.cpp
+function-decl: Solution::minimumTotal minimumTotal
+function-decl: Solution::min min
+function-decl: main main
+
+file: /Users/yingcao/re/DataSets/leetcode/algorithms/cpp/longestConsecutiveSequence/longestConsecutiveSequence.cpp
+function-decl: Solution::longestConsecutive longestConsecutive
+
