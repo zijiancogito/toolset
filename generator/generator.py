@@ -66,20 +66,21 @@ def simple(asm_filename, c_filename, parser=True):
 def full(asm_filename, c_filename, oasm, oc, parser=True):
   asm_f = open(asm_filename, 'r')
   c_f = open(c_filename, 'r')
-  asm_line = asm_f.readline().strip()
-  c_line = c_f.readline().strip()
+  asm_line = " "
+  c_line = " "
   while asm_line and c_line:
-    if c_line =='}':
-      pass
-    else:
-      if parser:
-        write(oasm, Rules('asm', asm_line.strip()).pcode.strip())
-        write(oc, Rules('cpp', c_line.strip()).pcode.strip())
-      else:
-        write(oasm, asm_line.strip()+'\n')
-        write(oc, c_line.strip()+'\n')
     asm_line = asm_f.readline().strip()
     c_line = c_f.readline().strip()
+    if c_line =='}':
+      continue
+    if c_line.startswith("return"):
+      asm_line += ";leave;ret;"
+    if parser:
+      write(oasm, Rules('asm', asm_line.strip()).pcode.strip())
+      write(oc, Rules('cpp', c_line.strip()).pcode.strip())
+    else:
+      write(oasm, asm_line.strip()+'\n')
+      write(oc, c_line.strip()+'\n')
   asm_f.close()
   c_f.close()
 

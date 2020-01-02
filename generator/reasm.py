@@ -13,6 +13,8 @@ class AsmELFInfo:
     self.filename = filename
     self._rodata_tab = {}
     self._data_tab = {}
+    self.get_data()
+    self.get_rodata()
 
   @property
   def rodata(self):
@@ -28,24 +30,36 @@ class AsmELFInfo:
       elffile = ELFFile(f)
       rodata = elffile.get_section_by_name(rodata_name)
       baseaddr = rodata.header['sh_offset']
-      mem_map = {}
       tmp_str = []
       addr = baseaddr
       for i in range(len(rodata.data())):
         tmp = rodata.data()[i]
         if tmp == 0x00:
-          mem_map[str(hex(addr))] = ''.join([str(hex(x)) for x in tmp_str])
+          self._rodata_tab[str(hex(addr))] = ''.join([chr(x) for x in tmp_str])
           tmp_str = []
           addr = baseaddr + i
         else:
           tmp_str.append(tmp)
-      print(mem_map)
-
+      # print(mem_map)
       # print(rodata.data())
 
   def get_data(self):
+    with open(self.filename, 'rb') as f:
+      rodata_name = '.data'
+      elffile = ELFFile(f)
+      rodata = elffile.get_section_by_name(rodata_name)
+      baseaddr = rodata.header['sh_offset']
+      tmp_str = []
+      addr = baseaddr
+      for i in range(len(rodata.data())):
+        tmp = rodata.data()[i]
+        if tmp == 0x00:
+          self._data_tab[str(hex(addr))] = ''.join([chr(x) for x in tmp_str])
+          tmp_str = []
+          addr = baseaddr + i
+        else:
+          tmp_str.append(tmp)
     return
-
 
 class AsmParser:
   OFFSET_INS = "[\S\s]{0,}\[[a-z]{2,3}[\+\-]0x[0-9A-Fa-f]{1,16}\][\S\s]{0,}"
@@ -207,4 +221,5 @@ if __name__ == "__main__":
   print(a.ins_seq)
 
   e = AsmELFInfo("../../DataSets/ccode/a.out")
-  e.get_rodata()
+  print(e.rodata)
+  print(e.data)
