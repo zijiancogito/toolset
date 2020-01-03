@@ -5,6 +5,7 @@
 int Global0[MAX],Global1[MAX];
 void Function0()
 {
+    boolean booltest = true;
     int LocalVar0,LocalVar1;
     memset(Global0,0,sizeof(Global0));
     Global0[0]=Global0[1]=1;
