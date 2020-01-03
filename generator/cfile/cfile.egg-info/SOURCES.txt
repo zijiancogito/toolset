@@ -1,0 +1,8 @@
+README.rst
+setup.py
+cfile/__init__.py
+cfile.egg-info/PKG-INFO
+cfile.egg-info/SOURCES.txt
+cfile.egg-info/dependency_links.txt
+cfile.egg-info/not-zip-safe
+cfile.egg-info/top_level.txt

@@ -19,7 +19,6 @@ def make_declare(var_index):
     return 'uint32_t var%s = %s' %(var_index, random_int32())
 
 def make_func_call(func_lst):
-
     func_index = random_list_var(0, func_num)
     return 'var%s = func%d(%s)' % (random_list_var(0,var_num), func_index, ', '.join([('var%s' % (random_list_var(0,var_num))) for i in range(func_lst[func_index])]))
 
