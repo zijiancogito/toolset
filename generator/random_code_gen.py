@@ -35,7 +35,7 @@ class FuncDecl:
     self.return_type = return_type
     self.func_name = name
     self.param_list = param_list
-                                                                                                                                                                                                                                                                                                                            
+
 class FuncComplex:
   def __init__(self, local_var_num, stmt_complex):
     self.local_var_num = local_var_num
@@ -122,11 +122,9 @@ def make_val_type():
   elif tp == 1: #char
     param = "%s %s" % (random.choice(CHAR_TYPE),
                                random.choice(['*', '']))
-  elif tp == 2: #real
+  else: #real
     param = "%s %s" % (random.choice(REAL_TYPE),
                                random.choice(['*', '']))
-  else:
-    pass
   return param
 
 def make_return_type():
@@ -157,13 +155,121 @@ def make_func_call(func_lst, param_num, func_num):
   func_index = random_list_var(0, func_num)
   return "func%d(%s)" 
 
-def make_bin_exp(op1, op2):
-  return "%s %s %s" % (op1, 
+def make_art_bin_exp(op1, op2):
+  return "%s %s %s" % (op1,
                        random.choice(ARITHMETIC_OPERATORS),
                        op2)
 
-def make_exp(oplist):
-  
+def make_logic_bin_exp(op1, op2):
+  return "%s %s %s" % (op1,
+                       random.choice(LOGICAL_OPERATORS),
+                       op2)
+
+def make_cmp_bin_exp(op1, op2):
+  return "%s %s %s" % (op1,
+                       random.choice(COMPARE_OPERATORS),
+                       op2)
+
+def make_art_exp(oplist):
+  if len(oplist) == 1:
+    pass
+  elif len(oplist) == 2:
+    new_op = make_art_bin_exp(oplist[0], oplist[1])
+    oplist.pop(0)
+    oplist.pop(0)
+    oplist.append(new_op)
+  else:
+    op1_index = random.randint(0, len(oplist) - 1)
+    op2_index = random.randint(0, len(oplist) - 1)
+    op1 = oplist[op1_index]
+    op2 = oplist[op2_index]
+    if op1_index < op2_index:
+      oplist.pop(op1_index)
+      oplist.pop(op2_index - 1)
+    elif op1_index > op2_index:
+      oplist.pop(op2_index)
+      oplist.pop(op1_index - 1)
+    else:
+      oplist.pop(op1_index)
+    new_op = make_art_bin_exp(op1, op2)
+    oplist.append("(%s)"%new_op)
+    make_art_exp(oplist)
+
+def make_logic_exp(oplist):
+  if len(oplist) == 1:
+    pass
+  elif len(oplist) == 2:
+    new_op = make_logic_bin_exp(oplist[0], oplist[1])
+    oplist.pop(0)
+    oplist.pop(0)
+    oplist.append(new_op)
+  else:
+    op1_index = random.randint(0, len(oplist) - 1)
+    op2_index = random.randint(0, len(oplist) - 1)
+    op1 = oplist[op1_index]
+    op2 = oplist[op2_index]
+    if op1_index < op2_index:
+      oplist.pop(op1_index)
+      oplist.pop(op2_index - 1)
+    elif op1_index > op2_index:
+      oplist.pop(op2_index)
+      oplist.pop(op1_index - 1)
+    else:
+      oplist.pop(op1_index)
+    new_op = make_logic_bin_exp(op1, op2)
+    oplist.append("(%s)"%new_op)
+    make_logic_exp(oplist)
+
+def random_sub_list(oplist, complex):
+  op_len = random.randint(1, complex)
+  return [random.choice(oplist) for i in range(op_len)]
+
+def make_art_cmp_exp(oplist, complex):
+  tmp1 = tmp2 = oplist
+  make_art_exp(random_sub_list(tmp1, complex))
+  make_art_exp(random_sub_list(tmp2, complex))
+  return make_cmp_bin_exp(tmp1[0], tmp2[0])
+
+def make_logic_cmp_exp(oplist):
+  tmp1 = tmp2 = oplist
+  make_logic_exp(random_sub_list(tmp1, complex))
+  make_logic_exp(random_sub_list(tmp2, complex))
+  return make_cmp_bin_exp(tmp1[0], tmp2[0])
+
+def make_cmp_logic_exp(oplist, complex):
+  tmplist=[]
+  for i in range(complex):
+    op1 = random.choice(oplist)
+    op2 = random.choice(oplist)
+    tmplist.append(make_cmp_bin_exp(op1, op2))
+  make_logic_exp(tmplist)
+  return tmplist[0]
+
+def make_mix_cmp_exp(oplist):
+  tmp1 = tmp2 = oplist
+  make_art_exp(random_sub_list(tmp1, complex))
+  make_logic_exp(random_sub_list(tmp2, complex))
+  return make_cmp_bin_exp(tmp1[0], tmp2[0])
+
+def make_mix_logic_exp(oplist, complex):
+  tmplist = []
+  for i in range(complex):
+    tmp = oplist
+    ch = random.choice(['art', 'cmp', 'cmpart'])
+    if ch == 'art':
+      make_art_exp(random_sub_list(tmp, complex))
+      tmplist.append(tmp[0])
+    elif ch == 'cmp':
+      tmplist.append(make_cmp_bin_exp(random.choice(tmp), random.choice(tmp)))
+    else:
+      tmplist.append(make_art_cmp_exp(tmp, complex))
+  make_logic_exp(tmplist)
+  return tmplist[0]
+
+def make_
+
+def make_oplist(oplist, complex):
+  return [random.choice(oplist) for i in range(complex)]
 
 def make_func_body(func_decl, func_complex):
   param_lst = func_decl.param_list
@@ -199,10 +305,13 @@ def make_func_body(func_decl, func_complex):
     _f.append(C.statement(var_decl))
     local_list.append(var)
   # init var
-  for var in local_list:
+  #for var in local_list:
     
 
 if __name__ == '__main__':
   fm = FuncComplex(5,0)
   f = make_func_decl(0, 3)
   make_func_body(f, fm)
+  ops = ["op1", "op2", "op1", "op3", "op5"]
+  make_exp(ops)
+  print(ops)
