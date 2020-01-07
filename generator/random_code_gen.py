@@ -11,7 +11,8 @@ VOID_TYPE = ['void']
 
 ARITHMETIC_OPERATORS = ['+', '-', '*', '/', '%']
 COMPARE_OPERATORS = ['==', '!=', '>', '<', '>=', '<=']
-LOGICAL_OPERATORS = ['&&', '||', '!']
+LOGICAL_OPERATORS = ['&&', '||']
+LOGICAL_SINGL_OPERATORS = ['!']
 BIT_OPERATORS = ['&', '|', '^', '~', '<<', '>>']
 SIZEOF = 'sizeof'
 POINTER = ['*', '&']
@@ -34,12 +35,11 @@ class ArrayDecl:
     self.shape = shape
 
 class FuncDecl:
-  def __init__(self, return_type, name, var_num, stmt_complex, param_list=[]):
+  def __init__(self, return_type, name, level,param_list=[]):
     self.return_type = return_type
     self.func_name = name
     self.param_list = param_list
-    self.local_var_num = var_num
-    self.stmt_complex = stmt_complex
+    self.level = level
 
 class FuncComplex:
   def __init__(self, 
@@ -68,7 +68,7 @@ class VarList:
     for i in UNSIGNED:
       for j in INT_TYPE:
         self._types.append("%s %s %s"%(i,j,'*'))
-        self._types.append("%s %s`"%(i,j))
+        self._types.append("%s %s"%(i,j))
     for i in CHAR_TYPE:
       self._types.append(i)
       self._types.append("%s *"%(i))
@@ -186,7 +186,7 @@ def make_array_str_decl(var_index, str_len):
 def make_pointer_str_decl(var_index):
   var_type = "%s *" % (random.choice(CHAR_TYPE))
   var_name = "var%s" % (var_index)
-  value = random_string()
+  value = random_string(random.randint(2,20))
   char_var = VarDecl(var_type, var_name, value)
   return char_var
 
@@ -220,7 +220,7 @@ def make_return_type():
                      random.choice(['*', '']))
   else:
     ret = 'void'
-  return ret
+  return ret.strip()
 
 def make_oplist(oplist, complex):
   return [random.choice(oplist) for i in range(complex)]
@@ -298,8 +298,8 @@ def make_art_cmp_exp(oplist):
 
 def make_logic_cmp_exp(oplist):
   tmp1 = tmp2 = oplist
-  make_logic_exp(random_sub_list(tmp1, complex))
-  make_logic_exp(random_sub_list(tmp2, complex))
+  make_logic_exp(random_sub_list(tmp1))
+  make_logic_exp(random_sub_list(tmp2))
   return make_cmp_bin_exp(tmp1[0], tmp2[0])
 
 def make_cmp_logic_exp(oplist, complex):
@@ -313,8 +313,8 @@ def make_cmp_logic_exp(oplist, complex):
 
 def make_mix_cmp_exp(oplist):
   tmp1 = tmp2 = oplist
-  make_art_exp(random_sub_list(tmp1, complex))
-  make_logic_exp(random_sub_list(tmp2, complex))
+  make_art_exp(random_sub_list(tmp1))
+  make_logic_exp(random_sub_list(tmp2))
   return make_cmp_bin_exp(tmp1[0], tmp2[0])
 
 def make_mix_logic_exp(oplist, complex):
@@ -323,12 +323,12 @@ def make_mix_logic_exp(oplist, complex):
     tmp = oplist
     ch = random.choice(['art', 'cmp', 'cmpart'])
     if ch == 'art':
-      make_art_exp(random_sub_list(tmp, complex))
+      make_art_exp(random_sub_list(tmp))
       tmplist.append(tmp[0])
     elif ch == 'cmp':
       tmplist.append(make_cmp_bin_exp(random.choice(tmp), random.choice(tmp)))
     else:
-      tmplist.append(make_art_cmp_exp(tmp, complex))
+      tmplist.append(make_art_cmp_exp(tmp))
   make_logic_exp(tmplist)
   return tmplist[0]
 
@@ -356,27 +356,35 @@ def make_con_stmt(oplist, complex):
   elif complex == 4: # art_cmp
     con = make_art_cmp_exp(oplist)
   elif complex == 5: # logic_cmp
-    con = make_logic_cmp_exp(tmp)
+    con = make_logic_cmp_exp(oplist)
   elif complex == 6: # cmp_logic
-    con = make_logic_cmp_exp(tmp)
+    con = make_logic_cmp_exp(oplist)
   elif complex == 7: # mix_cmp
     con = make_mix_cmp_exp(oplist)
   else:
     con = make_mix_logic_exp(oplist, random.randint(1,5))
   return con
 
-def make_if_stmt(oplist):
+def make_if_stmt(con):
   if_body = "int i = 0;"
   else_body = "int i = 1;"
-  return "if(%s){%s}else{%s}" % (make_con_stmt(oplist), if_body, else_body)
+  if_head = "if(%s)"%con
+  else_head = "else"
+  if_block = C.block(indent=2, innerIndent=2, head=if_head)
+  else_block = C.block(indent=2, innerIndent=2, head=else_head)
+  return if_block, else_block
     
-def make_while_stmt(oplist):
+def make_while_stmt(con):
   body = "int i = 2;"
-  return "while(%s){%s}" % (make_con_stmt(oplist), body)
+  head = "while(%s)"%con
+  block = C.block(indent=2, innerIndent=2, head=head)
+  return block
 
-def make_do_while_stmt(oplist):
+def make_do_while_stmt(con):
   body = "int i = 3;"
-  return "do{%s}while(%s)" % (body, make_con_stmt(oplist))
+  tail = "while(%s);"%con
+  block = C.block(indent=2, innerIndent=2, head="do", tail=tail)
+  return block
 
 def is_pointer(t):
   if t.endswith('*'):
@@ -384,11 +392,11 @@ def is_pointer(t):
   else:
     return False
 
-def make_func_decl(func_index, param_num, var_num, stmt_complex=0):
+def make_func_decl(func_index, param_num, level):
   param_list = [make_val_type() for index in range(param_num)]
   func_name = "func%s" % (func_index)
   ret_type = make_return_type()
-  func = FuncDecl(ret_type, func_name, var_num, stmt_complex, param_list)
+  func = FuncDecl(ret_type, func_name, level, param_list)
   return func
 
 def make_func_body(func_decl, func_complex):
@@ -408,38 +416,38 @@ def make_func_body(func_decl, func_complex):
     var_decl = ""
     if local_var_type == 0: # int
       var = make_int_decl(i)
-      local_list[var.var_type].append(var.var_name)
+      local_list.var_list[var.var_type].append(var.var_name)
       if not is_pointer(var.var_type):
-        local_list[var.var_type+" *"].append("&"+var.var_name)
+        local_list.var_list[var.var_type+" *"].append("&"+var.var_name)
       var_decl = "%s %s = %s" % (var.var_type, 
                                  var.var_name,
                                  var.value)
     elif local_var_type == 1: # real
       var = make_float_decl(i)
-      local_list[var.var_type].append(var.var_name)
+      local_list.var_list[var.var_type].append(var.var_name)
       if not is_pointer(var.var_type):
-        local_list[var.var_type+" *"].append("&"+var.var_name)
+        local_list.var_list[var.var_type+" *"].append("&"+var.var_name)
       var_decl = "%s %s = %s" % (var.var_type, 
                                  var.var_name,
                                  var.value)
     elif local_var_type == 2: # char
       var = make_char_decl(i)
-      local_list[var.var_type].append(var.var_name)
+      local_list.var_list[var.var_type].append(var.var_name)
       if not is_pointer(var.var_type):
-        local_list[var.var_type+" *"].append("&"+var.var_name)
+        local_list.var_list[var.var_type+" *"].append("&"+var.var_name)
       var_decl = "%s %s = \'%s\'" % (var.var_type, 
                                  var.var_name,
                                  var.value)
     elif local_var_type == 3: # char []
       var = make_array_str_decl(i, random.randint(2,10))
-      local_list[var.var_type+" *"].append(var.var_name)
+      local_list.var_list[var.var_type+" *"].append(var.var_name)
       var_decl = "%s %s[%d] = \"%s\"" % (var.var_type, 
                                          var.var_name, 
                                          var.shape,
                                          var.value) 
     elif local_var_type == 4: # char *
       var = make_pointer_str_decl(i)
-      local_list[var.var_type].append(var.var_name)
+      local_list.var_list[var.var_type].append(var.var_name)
       var_decl = "%s %s = \"%s\"" % (var.var_type, 
                                      var.var_name,
                                      var.value)
@@ -447,9 +455,7 @@ def make_func_body(func_decl, func_complex):
       raise IndexError
     _f.append(C.statement(var_decl))
     lvars.append(var)
-  # art expression
-  for i in range(func_complex.stmt_complex):
-    pass
+ 
 
 def make_func_call(funcs, vars):
   func = random.choice(funcs)
@@ -461,34 +467,52 @@ def make_func_call(funcs, vars):
     p_l.append(random.choice(vars.var_list[p]))
   return "%s(%s)" % (name, ", ".join(p_l)), ret
 
-def make_func_body_easy(func_decl, level, funcs): # level(1,5)
-  def sub_list(level, oplist):
-    op_len = random.randint(level, len(oplist))
-    return [random.choice(oplist) for i in range(op_len)]
-  def call_art_assignment_stmt(call_list, var_list, complex): # complex ExpComplex
-    target = random.choice(var_list)
-    tmp = call_list+var_list
-    tmp.extend(random_imms(complex))
+def make_return_value(oplist, complex):
+  tmp = [random.choice(oplist) for i in range(complex)]
+  ch = random.randint(0,8)
+  ret = ""
+  if ch == 0: # art
     make_art_exp(tmp)
-    return "%s = %s" % (target, tmp[0])
+    ret = tmp[0]
+  else:
+    mode = random.randint(1,8)
+    ret = make_con_stmt(tmp, mode)
+  return ret
+
+
+def call_art_assignment_stmt(call_list, var_list, complex): # complex ExpComplex
+  target = random.choice(var_list)
+  tmp = call_list+var_list
+  tmp.extend(random_imms(complex))
+  make_art_exp(tmp)
+  return "%s = %s" % (target, tmp[0])
+
+def sub_list(level, oplist):
+  op_len = random.randint(level, len(oplist))
+  return [random.choice(oplist) for i in range(op_len)]
+
+def make_func_body_easy(func_decl, level, funcs): # level(1,5)
   local_list = VarList()
   param_lst = func_decl.param_list
   ret_type = func_decl.return_type
   func_name = func_decl.func_name
+
   _h = C.function(func_name, ret_type,)
   for i in range(len(param_lst)):
     if ('*' or '[') not in param_lst[i]:
-      local_list[param_lst[i]].append('param%d'%i)
-      local_list[param_lst[i]+" *"].append('&param%d'%i)
+      local_list.var_list[param_lst[i]].append('param%d'%i)
+      local_list.var_list[param_lst[i]+" *"].append('&param%d'%i)
     else:
-      local_list[param_lst[i]].append('param%d'%i)
+      local_list.var_list[param_lst[i]].append('param%d'%i)
     _h = _h.add_arg(C.variable('param%d' % i, param_lst[i]))
   _w = C.sequence().append(_h)
-  _f = C.block(indent=0)
+  _f = C.block(indent=2)
+
   local_var_index = 0
   var_decls = []
   var_decls.append("int i")
   stmt_decls = []
+  block_decls = []
   int_type = []
   
   for tp in INT_TYPE:
@@ -504,8 +528,8 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
       var_decls.append(var_decl)
       ints.append(var.var_name)
       local_var_index += 1
-      local_list[tp].append(var)
-      local_list[tp+" *"].append('&'+var)
+      local_list.var_list[tp].append(var.var_name)
+      local_list.var_list[tp+" *"].append('&'+var.var_name)
     for i in range(len(param_lst)):
       if param_lst[i] == tp:
         ints.append("param%d"%(i))
@@ -523,8 +547,8 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
       var_decls.append(var_decl)
       floats.append(var.var_name)
       local_var_index += 1
-      local_list[tp].append(var)
-      local_list[tp+" *"].append('&'+var)
+      local_list.var_list[tp].append(var.var_name)
+      local_list.var_list[tp+" *"].append('&'+var.var_name)
     for i in range(len(param_lst)):
       if param_lst[i] == tp:
         ints.append("param%d"%(i))
@@ -538,12 +562,12 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
     chars = []
     for i in range(level):
       var = make_char_decl(local_var_index)
-      var_decl = "%s %s = %s"%(tp, var.var_name, var.value)
+      var_decl = "%s %s = \'%s\'"%(tp, var.var_name, var.value)
       var_decls.append(var_decl)
       chars.append(var.var_name)
       local_var_index += 1
-      local_list[tp].append(var)
-      local_list[tp+" *"].append('&'+var)
+      local_list.var_list[tp].append(var.var_name)
+      local_list.var_list[tp+" *"].append('&'+var.var_name)
 
   # define char *
   charps = []
@@ -553,7 +577,7 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
     var_decls.append(var_decl)
     charps.append(var.var_name)
     local_var_index += 1
-  local_list["char *"].append(var)
+  local_list.var_list["char *"].append(var.var_name)
   
   # define char []
   charas = []
@@ -565,7 +589,7 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
     var_decls.append(var_decl)
     charas.append(var.var_name)
     local_var_index += 1
-  local_list["char *"].append(var)
+  local_list.var_list["char *"].append(var.var_name)
 
   # define func_call
   calls = {}
@@ -588,37 +612,120 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
   for tp in calls:
     if ("signed" in tp) and ("*" not in tp):
       tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
-      tmp2 = [random.choice(local_list) for i in range(var_num)]
+      tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
       art_decl = call_art_assignment_stmt(tmp1, tmp2, level)
       stmt_decls.append(art_decl)
   
-  # define logic
+  # define con
   call_num = random.randint(0, level)
-  var_num = random.randint(1, level)
+  var_num = random.randint(2, level)
   for tp in calls:
-    if ("signed" in tp) and ("*" not in tp):
-      tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
-      tmp2 = [random.choice(local_list) for i in range(var_num)]
-      tmp = make_logic_exp()
-      stmt_decls.append(art_decl)
+    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
+    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
+    tmp3 = [random_signed_int() for i in range(level)]
+    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+    tmp = tmp1 + tmp2 + tmp3 + tmp4
+    for i in range(1,9):
+      con_decl = "i = %s"%(make_con_stmt(tmp, i))
+      stmt_decls.append(con_decl)
 
+  # define if
+  call_num = random.randint(0, level)
+  var_num = random.randint(2, level)
+  for tp in calls:
+    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
+    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
+    tmp3 = [random_signed_int() for i in range(level)]
+    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+    tmp = tmp1 + tmp2 + tmp3 + tmp4
+    for i in range(1,9):
+      con_decl = make_con_stmt(tmp, i)
+      if_decl, else_decl = make_if_stmt(con_decl)
+      block_decls.append(if_decl)
+      block_decls.append(else_decl)
+
+  # define while
+  call_num = random.randint(0, level)
+  var_num = random.randint(2, level)
+  for tp in calls:
+    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
+    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
+    tmp3 = [random_signed_int() for i in range(level)]
+    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+    tmp = tmp1 + tmp2 + tmp3 + tmp4
+    for i in range(1,9):
+      con_decl = make_con_stmt(tmp, i)
+      while_decl = make_while_stmt(con_decl)
+      block_decls.append(while_decl)
+
+  # define do while
+  call_num = random.randint(0, level)
+  var_num = random.randint(2, level)
+  for tp in calls:
+    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
+    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
+    tmp3 = [random_signed_int() for i in range(level)]
+    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+    tmp = tmp1 + tmp2 + tmp3 + tmp4
+    for i in range(1,9):
+      con_decl = make_con_stmt(tmp, i)
+      do_decl = make_do_while_stmt(con_decl)
+      block_decls.append(do_decl)
+
+  for decl in var_decls:
+    _f.append(C.statement(decl))
   
+  for decl in stmt_decls:
+    _f.append(C.statement(decl))
 
+  for decl in block_decls:
+    _f.append(decl)
   
+  if ret_type != 'void':
+    call_num = random.randint(0, level)
+    var_num = random.randint(2, level)
+    tmp1 = []
+    if ret_type in calls:
+      tmp1 = [random.choice(calls[ret_type]) for i in range(call_num)]
+    tmp2 = [random.choice(local_list.var_list[ret_type]) for i in range(var_num)]
+    tmp3 = [random_signed_int() for i in range(level)]
+    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+    tmp = tmp1 + tmp2 + tmp3 + tmp4
+    ret_value = make_return_value(tmp, level)
+    ret_decl = "return %s" % ret_value
+    _f.append(C.statement(ret_decl))
+  _w = _w.append(_f)
+  return _w
 
-  # reals = []
 
-  # local_list = VarList()
-  # local_stmt = []
-  # var_index = 0
-  # for tp in all_type:
-  #   for i in range(level+2):
+def make_decls(levelrange, num):
+  func_decls = []
+  index = 0
+  for level in range(1, levelrange+1):
+    for i in range(num):
+      pnum = random.randint(0,5)
+      decl = make_func_decl(index, pnum, level)
+      func_decls.append(decl)
+      index += 1
+  return func_decls
 
-
+def generator(level, num):
+  func_decl_list = make_decls(level, num)
+  test = C.cfile('test.c')
+  test.code.append(C.blank())
+  for func in func_decl_list:
+    decl = "%s %s(%s)"%(func.return_type, 
+                        func.func_name,
+                        ", ".join(func.param_list))
+    test.code.append(C.statement(decl))
+  for func in func_decl_list:
+    test.code.append(make_func_body_easy(func, level, func_decl_list))
+  test.code.append(C.function('main', 'int',).add_arg(C.variable('argc', 'int')).add_arg(C.variable('argv', 'char', pointer=2)))
+  body = C.block(indent=0)
+  body.append(C.statement('return 0'))
+  test.code.append(body)
+  print(test.path)
+  save_file(str(test.code))
 
 if __name__ == '__main__':
-  fm = FuncComplex(5,0)
-  f = make_func_decl(0, 3)
-  make_func_body(f, fm)
-  ops = ["op1", "op2", "op1", "op3", "op5"]
-  print(VarList().var_list)
+  generator(3,10)
