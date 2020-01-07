@@ -111,7 +111,15 @@ def random_float():
   return random.randint(a=-2**10, b=2**10) * 1.0 / random.randint(a=-2**31+1, b=2**31-1)
 
 def random_char():
-  return chr(random.randint(a=32, b=126))
+  ascii_code = random.randint(a=32, b=126)
+  if ascii_code == 92:
+    return '\\\\'
+  elif ascii_code == 34:
+    return '\\\"'
+  elif ascii_code == 39:
+    return '\\\''
+  else:
+    return chr(ascii_code)
 
 def random_string(length):
   tmp_str = [random_char() for i in range(length-1)]
@@ -366,24 +374,28 @@ def make_con_stmt(oplist, complex):
   return con
 
 def make_if_stmt(con):
-  if_body = "int i = 0;"
-  else_body = "int i = 1;"
+  if_body = "int i = 0"
+  else_body = "int i = 1"
   if_head = "if(%s)"%con
   else_head = "else"
   if_block = C.block(indent=2, innerIndent=2, head=if_head)
+  if_block.append(C.statement(if_body))
   else_block = C.block(indent=2, innerIndent=2, head=else_head)
+  else_block.append(C.statement(else_body))
   return if_block, else_block
     
 def make_while_stmt(con):
-  body = "int i = 2;"
+  body = "int i = 2"
   head = "while(%s)"%con
   block = C.block(indent=2, innerIndent=2, head=head)
+  block.append(C.statement(body))
   return block
 
 def make_do_while_stmt(con):
-  body = "int i = 3;"
+  body = "int i = 3"
   tail = "while(%s);"%con
   block = C.block(indent=2, innerIndent=2, head="do", tail=tail)
+  block.append(C.statement(body))
   return block
 
 def is_pointer(t):
