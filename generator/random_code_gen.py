@@ -3,13 +3,16 @@ import os, sys
 import cfile as C
 import random
 
+import pdb
+
 UNSIGNED = ['unsigned', 'signed']
 INT_TYPE = ['short', 'int', 'long', 'long long']
 CHAR_TYPE = ['char']
 REAL_TYPE = ['float', 'double']
 VOID_TYPE = ['void']
 
-ARITHMETIC_OPERATORS = ['+', '-', '*', '/', '%']
+ARITHMETIC_INT_OPERATORS = ['+', '-', '*', '/', '%']
+ARITHMETIC_OPERATORS = ['+', '-', '*', '/']
 COMPARE_OPERATORS = ['==', '!=', '>', '<', '>=', '<=']
 LOGICAL_OPERATORS = ['&&', '||']
 LOGICAL_SINGL_OPERATORS = ['!']
@@ -83,8 +86,11 @@ def save_file(code):
   with open('test.c', 'w') as f:
     f.write(code)
 
-def random_arith_op():
-  return random.choice(ARITHMETIC_OPERATORS)
+def random_arith_op(tp):
+  if tp == 1:
+    return random.choice(ARITHMETIC_OPERATORS)
+  else:
+    return random.choice(ARITHMETIC_INT_OPERATORS)
 
 def random_relate_op():
   return random.choice(COMPARE_OPERATORS)
@@ -120,6 +126,7 @@ def random_char():
     return '\\\''
   else:
     return chr(ascii_code)
+
 
 def random_string(length):
   tmp_str = [random_char() for i in range(length-1)]
@@ -233,26 +240,74 @@ def make_return_type():
 def make_oplist(oplist, complex):
   return [random.choice(oplist) for i in range(complex)]
 
-def make_art_bin_exp(op1, op2):
+def isDigit(x):
+  try:
+      x=int(x)
+      return isinstance(x,int)
+  except ValueError:
+      return False
+
+def isFloat(x):
+  try:
+      x=float(x)
+      return isinstance(x,float)
+  except ValueError:
+      return False
+
+def make_art_bin_exp(op1, op2, tp):
+  opc = random_arith_op(tp)
+  if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
+    return None
   return "%s %s %s" % (op1,
-                       random_arith_op(),
+                       opc,
                        op2)
 
 def make_logic_bin_exp(op1, op2):
+  opc = random_logic_op()
+  if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
+    return None
   return "%s %s %s" % (op1,
-                       random_logic_op(),
+                       opc,
                        op2)
 
 def make_cmp_bin_exp(op1, op2):
+  opc = random_relate_op()
+  if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
+    return None
   return "%s %s %s" % (op1,
-                       random_relate_op(),
+                       opc,
                        op2)
 
-def make_art_exp(oplist):
+def make_art_exp(lst, tp):
+  oplist = lst
+  #print(oplist)
+  while True:
+    if len(oplist) == 1:
+      return oplist[0]
+    elif len(oplist) == 2:
+      return make_art_bin_exp(oplist[0], oplist[1], tp)
+    else:
+      op1_index = random.randint(0, len(oplist) - 1)
+      op2_index = random.randint(0, len(oplist) - 1)
+      op1 = oplist[op1_index]
+      op2 = oplist[op2_index]
+      new_op = make_art_bin_exp(op1, op2, tp)
+      if new_op != None:
+        if op1_index < op2_index:
+          oplist.pop(op2_index)
+          oplist.pop(op1_index)
+        elif op1_index > op2_index:
+          oplist.pop(op1_index)
+          oplist.pop(op2_index)
+        else:
+          oplist.pop(op1_index)
+        oplist.append("(%s)"%new_op)
+
+def make_art_exp_rec(oplist, tp):
   if len(oplist) == 1:
     pass
   elif len(oplist) == 2:
-    new_op = make_art_bin_exp(oplist[0], oplist[1])
+    new_op = make_art_bin_exp(oplist[0], oplist[1], tp)
     oplist.pop(0)
     oplist.pop(0)
     oplist.append(new_op)
@@ -261,19 +316,49 @@ def make_art_exp(oplist):
     op2_index = random.randint(0, len(oplist) - 1)
     op1 = oplist[op1_index]
     op2 = oplist[op2_index]
-    if op1_index < op2_index:
-      oplist.pop(op1_index)
-      oplist.pop(op2_index - 1)
-    elif op1_index > op2_index:
-      oplist.pop(op2_index)
-      oplist.pop(op1_index - 1)
-    else:
-      oplist.pop(op1_index)
-    new_op = make_art_bin_exp(op1, op2)
-    oplist.append("(%s)"%new_op)
-    make_art_exp(oplist)
+    new_op = make_art_bin_exp(op1, op2, tp)
+    if new_op:
+      if op1_index < op2_index:
+        oplist.pop(op2_index)
+        oplist.pop(op1_index)
+      elif op1_index > op2_index:
+        oplist.pop(op1_index)
+        oplist.pop(op2_index)
+      else:
+        oplist.pop(op1_index)
 
-def make_logic_exp(oplist):
+      oplist.append("(%s)"%new_op)
+    # import pdb
+    # pdb.set_trace()
+    make_art_exp_rec(oplist, tp)
+
+def make_logic_exp(lst):
+  oplist = lst
+  # print(oplist)
+  while True:
+    if len(oplist) == 1:
+      return oplist[0]
+    elif len(oplist) == 2:
+      new_op = make_logic_bin_exp(oplist[0], oplist[1])
+      return new_op
+    else:
+      op1_index = random.randint(0, len(oplist) - 1)
+      op2_index = random.randint(0, len(oplist) - 1)
+      op1 = oplist[op1_index]
+      op2 = oplist[op2_index]
+      new_op = make_logic_bin_exp(op1, op2)
+      if new_op:
+        if op1_index < op2_index:
+          oplist.pop(op2_index)
+          oplist.pop(op1_index)
+        elif op1_index > op2_index:
+          oplist.pop(op1_index)
+          oplist.pop(op2_index)
+        else:
+          oplist.pop(op1_index)
+        oplist.append("(%s)"%new_op)
+
+def make_logic_exp_rec(oplist):
   if len(oplist) == 1:
     pass
   elif len(oplist) == 2:
@@ -286,91 +371,104 @@ def make_logic_exp(oplist):
     op2_index = random.randint(0, len(oplist) - 1)
     op1 = oplist[op1_index]
     op2 = oplist[op2_index]
-    if op1_index < op2_index:
-      oplist.pop(op1_index)
-      oplist.pop(op2_index - 1)
-    elif op1_index > op2_index:
-      oplist.pop(op2_index)
-      oplist.pop(op1_index - 1)
-    else:
-      oplist.pop(op1_index)
     new_op = make_logic_bin_exp(op1, op2)
-    oplist.append("(%s)"%new_op)
-    make_logic_exp(oplist)
+    if new_op:
+      if op1_index < op2_index:
+        oplist.pop(op2_index)
+        oplist.pop(op1_index)
+      elif op1_index > op2_index:
+        oplist.pop(op1_index)
+        oplist.pop(op2_index)
+      else:
+        oplist.pop(op1_index)
+      oplist.append("(%s)"%new_op)
+    # import pdb
+    # pdb.set_trace()
+    make_logic_exp_rec(oplist)
 
-def make_art_cmp_exp(oplist):
-  tmp1 = tmp2 = oplist
-  make_art_exp(random_sub_list(tmp1))
-  make_art_exp(random_sub_list(tmp2))
-  return make_cmp_bin_exp(tmp1[0], tmp2[0])
+def make_art_cmp_exp(oplist, consts, tp):
+  tmp1 = random_sub_list(oplist)
+  tmp2 = random_sub_list(oplist)
+  if len(consts)>0:
+    tmp1 += sub_list(consts, 1, 2)
+    tmp2 += sub_list(consts, 1, 2)
+  # pdb.set_trace()
+  exp1 = "(%s)"%make_art_exp(tmp1, tp)
+  exp2 = "(%s)"%make_art_exp(tmp2, tp)
+  return make_cmp_bin_exp(exp1, exp2)
 
 def make_logic_cmp_exp(oplist):
-  tmp1 = tmp2 = oplist
-  make_logic_exp(random_sub_list(tmp1))
-  make_logic_exp(random_sub_list(tmp2))
-  return make_cmp_bin_exp(tmp1[0], tmp2[0])
+  tmp1 = sub_list(oplist, 2, 3)
+  tmp2 = sub_list(oplist, 2, 3)
+  exp1 = "(%s)"%make_logic_exp(tmp1)
+  exp2 = "(%s)"%make_logic_exp(tmp2)
+  return make_cmp_bin_exp(exp1, exp2)
 
 def make_cmp_logic_exp(oplist, complex):
   tmplist=[]
   for i in range(complex):
     op1 = random.choice(oplist)
     op2 = random.choice(oplist)
-    tmplist.append(make_cmp_bin_exp(op1, op2))
-  make_logic_exp(tmplist)
-  return tmplist[0]
+    tmplist.append("(%s)"%make_cmp_bin_exp(op1, op2))
+  # print("line 409: make_cmp_logic_exp")
+  # print(tmplist)
+  exp = make_logic_exp(tmplist)
+  return exp
 
-def make_mix_cmp_exp(oplist):
+def make_mix_cmp_exp(oplist, tp):
   tmp1 = tmp2 = oplist
-  make_art_exp(random_sub_list(tmp1))
-  make_logic_exp(random_sub_list(tmp2))
-  return make_cmp_bin_exp(tmp1[0], tmp2[0])
+  # print("line 416: make_mix_cmp_exp")
+  # print(oplist)
+  exp1 = "(%s)"%make_art_exp(random_sub_list(tmp1), tp)
+  exp2 = "(%s)"%make_logic_exp(random_sub_list(tmp2))
+  return make_cmp_bin_exp(exp1, exp2)
 
-def make_mix_logic_exp(oplist, complex):
-  tmplist = []
-  for i in range(complex):
-    tmp = oplist
-    ch = random.choice(['art', 'cmp', 'cmpart'])
-    if ch == 'art':
-      make_art_exp(random_sub_list(tmp))
-      tmplist.append(tmp[0])
-    elif ch == 'cmp':
-      tmplist.append(make_cmp_bin_exp(random.choice(tmp), random.choice(tmp)))
-    else:
-      tmplist.append(make_art_cmp_exp(tmp))
-  make_logic_exp(tmplist)
-  return tmplist[0]
+def make_mix_logic_exp(oplist, complex, tp):
+  tmp1 = tmp2 = oplist
+  # print("line 424: ")
+  exp1 = "(%s)"%make_art_exp(random_sub_list(tmp1), tp)
+  exp2 = "(%s)"%make_logic_exp(random_sub_list(tmp2))
+  # print("line 423: make_mix_logic_exp")
+  return make_logic_bin_exp(exp1, exp2)
 
-def make_art_assignment_stmt(oplist, complex): # complex ExpComplex
+def make_art_assignment_stmt(oplist, complex, tp): # complex ExpComplex
   target = random.choice(oplist)
   tmp = oplist
-  tmp.extend(random_imms(complex))
-  make_art_exp(tmp)
-  return "%s = %s" % (target, tmp[0])
+  tmp.extend(random_imms(1))
+  exp1 = make_art_exp(tmp, tp)
+  return "%s = %s" % (target, exp1)
 
-def make_con_stmt(oplist, complex):
+def make_con_stmt(oplist, consts, complex, tp):
   con = ""
   if complex == 1: # cmp_bin
     op1 = random.choice(oplist)
-    op2 = random.choice(oplist)
+    op2 = ""
+    if random.randint(0,1) == 0 and len(consts)>0 :
+      op2 = random.choice(consts)
+    else:
+      op2 = random.choice(oplist)
     con = make_cmp_bin_exp(op1, op2)
   elif complex == 2: # logic_bin
     op1 = random.choice(oplist)
     op2 = random.choice(oplist)
+    # print("line 449: make_con_stmt")
     con = make_logic_bin_exp(op1, op2)
   elif complex == 3: # logic
     tmp = oplist
-    make_logic_exp(tmp)
-    con = tmp[0]
+    con = make_logic_exp(tmp)
   elif complex == 4: # art_cmp
-    con = make_art_cmp_exp(oplist)
+    # pdb.set_trace()
+    con = make_art_cmp_exp(oplist, consts, tp)
   elif complex == 5: # logic_cmp
     con = make_logic_cmp_exp(oplist)
   elif complex == 6: # cmp_logic
-    con = make_logic_cmp_exp(oplist)
-  elif complex == 7: # mix_cmp
-    con = make_mix_cmp_exp(oplist)
+    con = make_cmp_logic_exp(oplist, random.randint(2,3))
   else:
-    con = make_mix_logic_exp(oplist, random.randint(1,5))
+    pass
+  # else: # mix_cmp
+  #   con = make_mix_cmp_exp(oplist, tp)
+  # else:
+  #   con = make_mix_logic_exp(oplist, random.randint(1,5), tp)
   return con
 
 def make_if_stmt(con):
@@ -406,7 +504,7 @@ def is_pointer(t):
 
 def make_func_decl(func_index, param_num, level):
   param_list = [make_val_type() for index in range(param_num)]
-  func_name = "func%s" % (func_index)
+  func_name = "Function%s" % (func_index)
   ret_type = make_return_type()
   func = FuncDecl(ret_type, func_name, level, param_list)
   return func
@@ -479,28 +577,30 @@ def make_func_call(funcs, vars):
     p_l.append(random.choice(vars.var_list[p]))
   return "%s(%s)" % (name, ", ".join(p_l)), ret
 
-def make_return_value(oplist, complex):
-  tmp = [random.choice(oplist) for i in range(complex)]
+def make_return_value(oplist, consts, complex, tp, rt):
+  # pdb.set_trace()
+  tmp = sub_list(oplist, complex, complex)
+  # print("line 577: make_return_value")
   ch = random.randint(0,8)
   ret = ""
-  if ch == 0: # art
-    make_art_exp(tmp)
-    ret = tmp[0]
+  if ch == 0 and tp == 0: # art
+    ret = make_art_exp(tmp, tp)
   else:
-    mode = random.randint(1,8)
-    ret = make_con_stmt(tmp, mode)
+    mode = random.choice([1,2,3,5,6])
+    ret = make_con_stmt(tmp, consts, mode, tp)
   return ret
 
 
-def call_art_assignment_stmt(call_list, var_list, complex): # complex ExpComplex
+def call_art_assignment_stmt(call_list, var_list, complex, tp): # complex ExpComplex
   target = random.choice(var_list)
-  tmp = call_list+var_list
-  tmp.extend(random_imms(complex))
-  make_art_exp(tmp)
-  return "%s = %s" % (target, tmp[0])
+  tmp = [random.choice(call_list)]
+  consts = [random_signed_int() for i in range(complex)]
+  tmp = tmp + sub_list(call_list+var_list+consts, complex, complex)
+  exp1 = make_art_exp(tmp, tp)
+  return "%s = %s" % (target, exp1)
 
-def sub_list(level, oplist):
-  op_len = random.randint(level, len(oplist))
+def sub_list(oplist, _min, _max):
+  op_len = random.randint(_min, _max)
   return [random.choice(oplist) for i in range(op_len)]
 
 def make_func_body_easy(func_decl, level, funcs): # level(1,5)
@@ -527,9 +627,10 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
   block_decls = []
   int_type = []
   
-  for tp in INT_TYPE:
-    int_type.append("%s %s" % ("unsigned", tp))
-    int_type.append("%s %s" % ("signed", tp))
+  for signed in UNSIGNED:
+    for tp in INT_TYPE:
+      int_type.append("%s %s" % (signed, tp))
+      int_type.append("%s %s" % (signed, tp))
 
   # define int
   for tp in int_type:
@@ -546,8 +647,8 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
       if param_lst[i] == tp:
         ints.append("param%d"%(i))
     for i in range(level):
-      tmp = sub_list(level, ints)
-      art_stmt = make_art_assignment_stmt(tmp, level)
+      tmp = sub_list(ints, level, level)
+      art_stmt = make_art_assignment_stmt(tmp, level, 0)
       stmt_decls.append(art_stmt)
 
   # define float
@@ -563,10 +664,10 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
       local_list.var_list[tp+" *"].append('&'+var.var_name)
     for i in range(len(param_lst)):
       if param_lst[i] == tp:
-        ints.append("param%d"%(i))
+        floats.append("param%d"%(i))
     for i in range(level):
-      tmp = sub_list(level, ints)
-      art_stmt = make_art_assignment_stmt(tmp, level)
+      tmp = sub_list(floats, level, level)
+      art_stmt = make_art_assignment_stmt(tmp, level, 1)
       stmt_decls.append(art_stmt)
 
   # define char
@@ -619,70 +720,97 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
     stmt_decls.append(call_decl)
   
   # define func call art
-  call_num = random.randint(1, level)
+  call_num = random.randint(1, 2)
   var_num = random.randint(1, level)
   for tp in calls:
     if ("signed" in tp) and ("*" not in tp):
-      tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
-      tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
-      art_decl = call_art_assignment_stmt(tmp1, tmp2, level)
+      tmp1 = sub_list(calls[tp], 1, 2)
+      tmp2 = sub_list(local_list.var_list[tp], var_num, var_num)
+      art_decl = call_art_assignment_stmt(tmp1, tmp2, level, 1)
       stmt_decls.append(art_decl)
   
   # define con
-  call_num = random.randint(0, level)
-  var_num = random.randint(2, level)
   for tp in calls:
-    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
-    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
-    tmp3 = [random_signed_int() for i in range(level)]
-    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
-    tmp = tmp1 + tmp2 + tmp3 + tmp4
-    for i in range(1,9):
-      con_decl = "i = %s"%(make_con_stmt(tmp, i))
-      stmt_decls.append(con_decl)
+    if ("signed" in tp) and ("*" not in tp):
+      tmp1 = sub_list(calls[tp], 0, 2)
+      tmp2 = sub_list(local_list.var_list[tp], 2, level)
+      tmp3 = [random_signed_int() for i in range(level)]
+      tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+      val_tmp = tmp1 + tmp2
+      const_tmp = tmp3 + tmp4
+      for i in range(1,7):
+        tmp5 = []
+        # tmp6 = sub_list(const_tmp, 1, 2)
+        tmp6 = []
+        if level <= 2:
+          tmp5 = sub_list(val_tmp, 2, 2)
+        else:
+          tmp5 = sub_list(val_tmp, 2, level)
+        # import pdb
+        # pdb.set_trace()
+        con_decl = "i = %s"%(make_con_stmt(tmp5, tmp6, i, 1))
+        stmt_decls.append(con_decl)
 
   # define if
-  call_num = random.randint(0, level)
-  var_num = random.randint(2, level)
   for tp in calls:
-    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
-    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
-    tmp3 = [random_signed_int() for i in range(level)]
-    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
-    tmp = tmp1 + tmp2 + tmp3 + tmp4
-    for i in range(1,9):
-      con_decl = make_con_stmt(tmp, i)
-      if_decl, else_decl = make_if_stmt(con_decl)
-      block_decls.append(if_decl)
-      block_decls.append(else_decl)
+    if ("signed" in tp) and ("*" not in tp):
+      tmp1 = sub_list(calls[tp], 0, 2)
+      tmp2 = sub_list(local_list.var_list[tp], 2, level)
+      tmp3 = [random_signed_int() for i in range(level)]
+      tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+      val_tmp = tmp1 + tmp2
+      const_tmp = tmp3 + tmp4
+      for i in range(1,7):
+        tmp5 = []
+        tmp6 = sub_list(const_tmp, 1, 2)
+        if level <= 2:
+          tmp5 = sub_list(val_tmp, 2, 2)
+        else:
+          tmp5 = sub_list(val_tmp, level, level)
+        con_decl = make_con_stmt(tmp5, tmp6, i, 1)
+        if_decl, else_decl = make_if_stmt(con_decl)
+        block_decls.append(if_decl)
+        block_decls.append(else_decl)
 
   # define while
-  call_num = random.randint(0, level)
-  var_num = random.randint(2, level)
   for tp in calls:
-    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
-    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
-    tmp3 = [random_signed_int() for i in range(level)]
-    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
-    tmp = tmp1 + tmp2 + tmp3 + tmp4
-    for i in range(1,9):
-      con_decl = make_con_stmt(tmp, i)
-      while_decl = make_while_stmt(con_decl)
-      block_decls.append(while_decl)
+    if ("signed" in tp) and ("*" not in tp):
+      tmp1 = sub_list(calls[tp], 0, 2)
+      tmp2 = sub_list(local_list.var_list[tp], 2, level)
+      tmp3 = [random_signed_int() for i in range(level)]
+      tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+      val_tmp = tmp1 + tmp2
+      const_tmp = tmp3 + tmp4
+      for i in range(1,7):
+        tmp5 = []
+        tmp6 = sub_list(const_tmp, 1, 2)
+        if level <= 2:
+          tmp5 = sub_list(val_tmp, 2, 2)
+        else:
+          tmp5 = sub_list(val_tmp, level, level)
+        con_decl = make_con_stmt(tmp5, tmp6, i, 1)
+        while_decl = make_while_stmt(con_decl)
+        block_decls.append(while_decl)
 
   # define do while
-  call_num = random.randint(0, level)
-  var_num = random.randint(2, level)
   for tp in calls:
-    tmp1 = [random.choice(calls[tp]) for i in range(call_num)]
-    tmp2 = [random.choice(local_list.var_list[tp]) for i in range(var_num)]
-    tmp3 = [random_signed_int() for i in range(level)]
-    tmp4 = ["\'%s\'"%random_char() for i in range(level)]
-    tmp = tmp1 + tmp2 + tmp3 + tmp4
-    for i in range(1,9):
-      con_decl = make_con_stmt(tmp, i)
-      do_decl = make_do_while_stmt(con_decl)
-      block_decls.append(do_decl)
+    if ("signed" in tp) and ("*" not in tp):
+      tmp1 = sub_list(calls[tp], 0, 2)
+      tmp2 = sub_list(local_list.var_list[tp], 2, level)
+      tmp3 = [random_signed_int() for i in range(level)]
+      tmp4 = ["\'%s\'"%random_char() for i in range(level)]
+      val_tmp = tmp1 + tmp2
+      const_tmp = tmp3 + tmp4
+      for i in range(1,7):
+        tmp5 = []
+        tmp6 = sub_list(const_tmp, 1, 2)
+        if level <= 2:
+          tmp5 = sub_list(val_tmp, 2, 2)
+        else:
+          tmp5 = sub_list(val_tmp, level, level)
+        con_decl = make_con_stmt(tmp5, tmp6, i, 1)
+        do_decl = make_do_while_stmt(con_decl)
+        block_decls.append(do_decl)
 
   for decl in var_decls:
     _f.append(C.statement(decl))
@@ -698,12 +826,22 @@ def make_func_body_easy(func_decl, level, funcs): # level(1,5)
     var_num = random.randint(2, level)
     tmp1 = []
     if ret_type in calls:
-      tmp1 = [random.choice(calls[ret_type]) for i in range(call_num)]
-    tmp2 = [random.choice(local_list.var_list[ret_type]) for i in range(var_num)]
+      tmp1 = sub_list(calls[ret_type], 0, level)  
+    tmp2 = sub_list(local_list.var_list[ret_type], 2, level)
     tmp3 = [random_signed_int() for i in range(level)]
     tmp4 = ["\'%s\'"%random_char() for i in range(level)]
-    tmp = tmp1 + tmp2 + tmp3 + tmp4
-    ret_value = make_return_value(tmp, level)
+    val_tmp = tmp1 + tmp2
+    const_tmp = tmp3 + tmp4
+    tmp5 = []
+    tmp6 = sub_list(const_tmp, 1, 2)
+    if level <= 2:
+      tmp5 = sub_list(val_tmp, 2, 2)
+    else:
+      tmp5 = sub_list(val_tmp, level, level)
+    if ("signed" in ret_type) and ("*" not in ret_type):
+      ret_value = make_return_value(tmp5, tmp6, level, 0, ret_type)
+    else:
+      ret_value = make_return_value(tmp5, tmp6, level, 1, ret_type)
     ret_decl = "return %s" % ret_value
     _f.append(C.statement(ret_decl))
   _w = _w.append(_f)
@@ -715,23 +853,28 @@ def make_decls(levelrange, num):
   index = 0
   for level in range(1, levelrange+1):
     for i in range(num):
-      pnum = random.randint(0,5)
+      pnum = random.randint(0,level)
       decl = make_func_decl(index, pnum, level)
       func_decls.append(decl)
       index += 1
   return func_decls
 
-def generator(level, num):
+def generator(level, num, filename):
   func_decl_list = make_decls(level, num)
-  test = C.cfile('test.c')
+  test = C.cfile(filename)
   test.code.append(C.blank())
+  import time
   for func in func_decl_list:
     decl = "%s %s(%s)"%(func.return_type, 
                         func.func_name,
                         ", ".join(func.param_list))
     test.code.append(C.statement(decl))
+  count = 0
   for func in func_decl_list:
+    count += 1
     test.code.append(make_func_body_easy(func, level, func_decl_list))
+    print("{0}%".format(round(count*100/(level*num))), end="\r")
+    # time.sleep(0.01)
   test.code.append(C.function('main', 'int',).add_arg(C.variable('argc', 'int')).add_arg(C.variable('argv', 'char', pointer=2)))
   body = C.block(indent=0)
   body.append(C.statement('return 0'))
@@ -740,4 +883,5 @@ def generator(level, num):
   save_file(str(test.code))
 
 if __name__ == '__main__':
-  generator(3,10)
+  
+  generator(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
