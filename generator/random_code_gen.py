@@ -82,8 +82,8 @@ class VarList:
     for i in self._types:
       self.var_list[i] = []
 
-def save_file(code):
-  with open('test.c', 'w') as f:
+def save_file(code, filename):
+  with open(filename, 'w') as f:
     f.write(code)
 
 def random_arith_op(tp):
@@ -117,7 +117,7 @@ def random_float():
   return random.randint(a=-2**10, b=2**10) * 1.0 / random.randint(a=-2**31+1, b=2**31-1)
 
 def random_char():
-  ascii_code = random.randint(a=32, b=126)
+  ascii_code = random.randint(a=97, b=122)
   if ascii_code == 92:
     return '\\\\'
   elif ascii_code == 34:
@@ -195,7 +195,7 @@ def make_array_str_decl(var_index, str_len):
   var_type = random.choice(CHAR_TYPE)
   var_name = "var%s" % (var_index)
   value = random_string(str_len)
-  char_var = ArrayDecl(var_type, var_name, value, str_len)
+  char_var = ArrayDecl(var_type, var_name, str_len, value)
   return char_var
 
 def make_pointer_str_decl(var_index):
@@ -257,7 +257,7 @@ def isFloat(x):
 def make_art_bin_exp(op1, op2, tp):
   opc = random_arith_op(tp)
   if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
-    return None
+    return eval(op1,op2)
   return "%s %s %s" % (op1,
                        opc,
                        op2)
@@ -265,7 +265,7 @@ def make_art_bin_exp(op1, op2, tp):
 def make_logic_bin_exp(op1, op2):
   opc = random_logic_op()
   if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
-    return None
+    return eval(op1,op2)
   return "%s %s %s" % (op1,
                        opc,
                        op2)
@@ -273,7 +273,7 @@ def make_logic_bin_exp(op1, op2):
 def make_cmp_bin_exp(op1, op2):
   opc = random_relate_op()
   if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
-    return None
+    return eval(op1,op2)
   return "%s %s %s" % (op1,
                        opc,
                        op2)
@@ -880,8 +880,14 @@ def generator(level, num, filename):
   body.append(C.statement('return 0'))
   test.code.append(body)
   print(test.path)
-  save_file(str(test.code))
+  save_file(str(test.code), filename)
+
+def generate_files(level, num, path):
+  
+  for index in range(num):
+    filename = os.path.join(path, "code%d.c"%index)
+    generator(level, 2, filename)
 
 if __name__ == '__main__':
-  
-  generator(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
+  generate_files(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
+  # generator(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
