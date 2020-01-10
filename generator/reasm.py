@@ -3,6 +3,7 @@ import re
 import os
 import sys
 import argparse
+import binascii
 
 import pdb
 from elftools.elf.elffile import ELFFile
@@ -61,6 +62,52 @@ class AsmELFInfo:
           tmp_str.append(tmp)
     return
 
+class CParser:
+  STRING = ""
+
+
+  def __init__(self, c_block):
+    self._c_block = c_block
+    self._c = c_block
+    self._str_dict = {}
+
+  def replace_string(self):
+    parttern = '\"(.+?)\"'
+    strs = re.findall(parttern, self._c_block)
+    for string in strs:
+      str_hex_list = _split_string(string)
+      sub_str = ' '.join(str_hex_list)
+      self._c = re.sub(string, sub_str, self._c,  1)
+    
+  def replace_char(self):
+    parttern = "\'[\S\s]\'"
+    chars = re.findall(parttern, self._)
+    return
+
+  def _split_code(self):
+    str_lst = self._c_block.split(' ')
+    str_flag = 0
+    
+  def _split_string(self, string):
+    tmp = []
+    while len(string) == 0:
+      tmp_str = ""
+      if len(string) <=8:
+        tmp_str = string[-1:]
+        string = ""
+      else:
+        tmp_str = string[0:8]
+        string = string[8:]
+      tmp.append("0x%s"%binascii.b2a_hex(tmp_str.encode()).decode())
+
+# class CNode:
+
+
+# class CTree:
+#   pass
+    
+
+
 class AsmParser:
   OFFSET_INS = "[\S\s]{0,}\[[a-z]{2,3}[\+\-]0x[0-9A-Fa-f]{1,16}\][\S\s]{0,}"
   IMM_INS = "[\S\s]{0,}[^+-]0x[0-9A-Fa-f]{0,16}\Z"
@@ -71,7 +118,7 @@ class AsmParser:
   OFFSET = "[\S\s]{0,}[\+\-]0x[0-9A-Fa-f]{1,16}\]\Z"
 
   def __init__(self, asm_block):
-    self._asm_block = re.sub(" PTR", "", asm_block.strip())
+    self._asm_block = asm_block# re.sub(" PTR", "", asm_block.strip())
     self._addr_tab = {}
     self._imm_tab = {}
     self._offset_tab = {}
@@ -129,8 +176,15 @@ class AsmParser:
     self.replace_all()
     asm = []
     for ins in self._insn_list:
-      asm.append(' '.join(ins))
-    return ';'.join(asm)
+      tmp = []
+      for op in ins:
+        op = ''.join(op.split(' '))
+        tmp.append(op)
+      asm.append(' '.join(tmp))
+    return '\t'.join(asm)
+
+  def new_asm_list(self):
+    return
 
   def _set_insn_list(self):
     for ins in self._asm_block.split(';'):
@@ -195,18 +249,19 @@ class AsmParser:
     self._replace_imm()
 
 def main():
-  parser = argparse.ArgumentParser(description='Label asm border')
+  parser = argparse.ArgumentParser(description='re asm')
   parser.add_argument(dest='filenames',metavar='filename', nargs='*')
   parser.add_argument('-o', dest='outfile', action='store', required=True, help='output file')
   args = parser.parse_args()
 
   out = open(args.outfile, 'w')
+  out_dic = {}
   for filename in args.filenames:
     with open(filename, 'r') as f:
       line = f.readline()
       while line:
         reasm = AsmParser(line.strip())
-        out.write(reasm.new_asm)
+        out_dic[new_asm]
         out.write('\n')
         line = f.readline()
   out.close()
@@ -219,7 +274,6 @@ if __name__ == "__main__":
   print(a.imm_map)
   print(a.offset_map)
   print(a.ins_seq)
-
   e = AsmELFInfo("../../DataSets/ccode/a.out")
   print(e.rodata)
   print(e.data)

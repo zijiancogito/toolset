@@ -130,7 +130,7 @@ def random_char():
 
 def random_string(length):
   tmp_str = [random_char() for i in range(length-1)]
-  return ''.join(tmp_str) + '\0'
+  return ''.join(tmp_str)
 
 def random_list_var(a, b):
   return random.randint(a, b-1)
@@ -257,7 +257,7 @@ def isFloat(x):
 def make_art_bin_exp(op1, op2, tp):
   opc = random_arith_op(tp)
   if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
-    return eval(op1,op2)
+    return None
   return "%s %s %s" % (op1,
                        opc,
                        op2)
@@ -265,7 +265,7 @@ def make_art_bin_exp(op1, op2, tp):
 def make_logic_bin_exp(op1, op2):
   opc = random_logic_op()
   if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
-    return eval(op1,op2)
+    return None
   return "%s %s %s" % (op1,
                        opc,
                        op2)
@@ -273,7 +273,7 @@ def make_logic_bin_exp(op1, op2):
 def make_cmp_bin_exp(op1, op2):
   opc = random_relate_op()
   if (isDigit(op1) or isFloat(op1) or str(op1).startswith('\'')) and (isDigit(op2) or isFloat(op2) or str(op2).startswith('\'')):
-    return eval(op1,op2)
+    return None
   return "%s %s %s" % (op1,
                        opc,
                        op2)
@@ -889,5 +889,5 @@ def generate_files(level, num, path):
     generator(level, 2, filename)
 
 if __name__ == '__main__':
-  generate_files(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
-  # generator(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
+  # generate_files(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
+  generator(int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
