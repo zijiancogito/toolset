@@ -24,7 +24,7 @@ def read_file(filename):
       pdb.set_trace()
       asm = AsmParser(';'.join(asm_list))
       new_asm = asm.new_asm
-      table = asm.imm_tab
+      table = asm.imm_map
       new_c = CParser(c_block).sub_table(table)
 
 
