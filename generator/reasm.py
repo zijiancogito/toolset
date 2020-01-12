@@ -69,7 +69,18 @@ class CParser:
   def __init__(self, c_block):
     self._c_block = c_block
     self._c = c_block
+    self._c_list = {}
     self._str_dict = {}
+    self.replace_string()
+    self.replace_char()
+
+  def sub_table(self, table):
+    lst = self._c_block.split(' ')
+    for i in range(lst):
+      if lst[i] in table:
+        lst[i] = table[lst[i]]
+    return ' '.join(lst)
+
 
   def replace_string(self):
     parttern = '\"(.+?)\"'
@@ -81,8 +92,9 @@ class CParser:
     
   def replace_char(self):
     parttern = "\'[\S\s]\'"
-    chars = re.findall(parttern, self._)
-    return
+    chars = re.findall(parttern, self._c)
+    for char in chars:
+      self._c = re.sub(char, hex(int(char)), self._c)
 
   def _split_code(self):
     str_lst = self._c_block.split(' ')
@@ -99,14 +111,12 @@ class CParser:
         tmp_str = string[0:8]
         string = string[8:]
       tmp.append("0x%s"%binascii.b2a_hex(tmp_str.encode()).decode())
-
+    return tmp
 # class CNode:
 
 
 # class CTree:
 #   pass
-    
-
 
 class AsmParser:
   OFFSET_INS = "[\S\s]{0,}\[[a-z]{2,3}[\+\-]0x[0-9A-Fa-f]{1,16}\][\S\s]{0,}"

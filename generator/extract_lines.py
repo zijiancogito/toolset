@@ -1,8 +1,10 @@
 import os, sys
 import pdb
 import yaml
+from generator.reasm import AsmParser, CParser
 sys.path.append('..')
 from utils.listdir import list_all_files
+
 
 def read_file(filename):
   with open(filename, 'r') as f:
@@ -14,8 +16,12 @@ def read_file(filename):
       asm_block = line[1]
       asm_list = []
       for addr in asm_block:
-        asm_list.append(addr)
-      
+        if asm_block[addr] != '{':
+          asm_list.append(asm_block[addr])
+      asm = AsmParser(';'.join(asm_list))
+      new_asm = asm.new_asm
+      table = asm.imm_tab
+      new_c = CParser(c_block).sub_table(table)
 
 
 if __name__ == '__main__':
