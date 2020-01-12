@@ -10,11 +10,12 @@ def read_file(filename):
     tmp = yaml.load(stream)
     pdb.set_trace()
     for line in tmp:
-      c_block = tmp[0]
-      asm_lines = tmp[1]
-      asm_block = ""
-      for addr in asm_lines:
-        asm = asm_lines[addr]
+      c_block = line[0]
+      asm_block = line[1]
+      asm_list = []
+      for addr in asm_block:
+        asm_list.append(addr)
+      
 
 
 if __name__ == '__main__':
