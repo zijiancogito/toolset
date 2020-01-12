@@ -71,12 +71,13 @@ class CParser:
     self._c = c_block
     self._c_list = {}
     self._str_dict = {}
+    
     # self.replace_string()
     # self.replace_char()
 
   def sub_table(self, table):
     lst = self._c_block.split(' ')
-    for i in range(lst):
+    for i in range(len(lst)):
       if lst[i] in table:
         lst[i] = table[lst[i]]
     return ' '.join(lst)
