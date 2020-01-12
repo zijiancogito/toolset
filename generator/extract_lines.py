@@ -1,7 +1,7 @@
 import os, sys
 import pdb
 import yaml
-from generator.reasm import AsmParser, CParser
+from reasm import AsmParser, CParser
 sys.path.append('..')
 from utils.listdir import list_all_files
 
