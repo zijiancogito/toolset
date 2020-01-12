@@ -14,8 +14,8 @@ def read_file(filename):
     tmp = yaml.load(stream)
     #pdb.set_trace()
     basename, ext = os.path.split(os.path.basename(filename))
-    cfile = os.path.join(os.path.dirname(filename), "list/%s.c", basename)
-    sfile = os.path.join(os.path.dirname(filename), "list/%s.s", basename)
+    cfile = os.path.join(os.path.dirname(filename), "list/", "%s.c"%basename)
+    sfile = os.path.join(os.path.dirname(filename), "list/", "%s.s"%basename)
     cf = open(cfile, 'w')
     sf = open(sfile, 'w')
     for line in tmp:
