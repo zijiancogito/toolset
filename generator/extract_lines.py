@@ -17,8 +17,9 @@ def read_file(filename):
       asm_block = line[1]
       asm_list = []
       for addr in asm_block:
-        if asm_block[addr] != '{':
+        if c_block != '{':
           asm_list.append(asm_block[addr])
+      pdb.set_trace()
       asm = AsmParser(';'.join(asm_list))
       new_asm = asm.new_asm
       table = asm.imm_tab
