@@ -9,6 +9,12 @@ def read_file(filename):
     stream = f.read()
     tmp = yaml.load(stream)
     pdb.set_trace()
+    for line in tmp:
+      c_block = tmp[0]
+      asm_lines = tmp[1]
+      asm_block = ""
+      for addr in asm_lines:
+        asm = asm_lines[addr]
 
 
 if __name__ == '__main__':
