@@ -206,9 +206,10 @@ class AsmParser:
 
   def _set_insn_list(self):
     for ins in self._asm_block.split(';'):
-      opc = [ins.split(r'[\s]{2,}')[0].strip()]
-      if len(ins.split(r'[\s]{2,}')) > 1:
-        ops = ins.split(r'[\s]{2,}')[1].split(',')
+      ins = re.sub('[\s]{2,4}', '\t', ins)
+      opc = [ins.split('\t')[0].strip()]
+      if len(ins.split('\t')) > 1:
+        ops = ins.split('\t')[1].split(',')
         for op in ops:
           opc.append(op.strip())
       self._insn_list.append(opc)
