@@ -188,13 +188,21 @@ class AsmParser:
     for ins in self._insn_list:
       tmp = []
       for op in ins:
-        op = ''.join(op.split(' '))
+        op = ' '.join(op.split(' '))
         tmp.append(op)
       asm.append(' '.join(tmp))
     return '\t'.join(asm)
 
   def new_asm_list(self):
-    return
+    self.replace_all()
+    asm = []
+    for ins in self._insn_list:
+      tmp = []
+      for op in ins:
+        op = ' '.join(op.split(' '))
+        tmp.append(op)
+      asm.append(' '.join(tmp))
+    return asm
 
   def _set_insn_list(self):
     for ins in self._asm_block.split(';'):
