@@ -14,6 +14,8 @@ def read_file(filename):
     pdb.set_trace()
     for line in tmp:
       c_block = line[0]
+      if c_block == '{' or c_block == '}':
+        continue
       asm_block = line[1]
       asm_list = []
       for addr in asm_block:
