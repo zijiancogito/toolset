@@ -25,7 +25,8 @@ def read_file(filename):
       asm = AsmParser(';'.join(asm_list))
       new_asm = asm.new_asm
       table = asm.imm_map
-      new_c = CParser(c_block).sub_table(table)
+      c = CParser(c_block)
+      new_c = c.sub_table(table)
 
 
 if __name__ == '__main__':

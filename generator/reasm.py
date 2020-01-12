@@ -71,8 +71,8 @@ class CParser:
     self._c = c_block
     self._c_list = {}
     self._str_dict = {}
-    self.replace_string()
-    self.replace_char()
+    # self.replace_string()
+    # self.replace_char()
 
   def sub_table(self, table):
     lst = self._c_block.split(' ')
