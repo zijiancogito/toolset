@@ -2,6 +2,7 @@
 import os, sys
 import pdb
 import yaml
+from multiprocessing import Pool
 from reasm import AsmParser, CParser
 sys.path.append('..')
 from utils.listdir import list_all_files
@@ -12,8 +13,7 @@ def read_file(filename):
   with open(filename, 'r') as f:
     stream = f.read()
     tmp = yaml.load(stream)
-    
-    pdb.set_trace()
+    #pdb.set_trace()
     basename = os.path.basename(filename).split('.')[0]
     cfile = os.path.join(os.path.dirname(filename), "list/", "%s.c"%basename)
     sfile = os.path.join(os.path.dirname(filename), "list/", "%s.s"%basename)
@@ -44,7 +44,9 @@ def read_file(filename):
 
 if __name__ == '__main__':
   files = list_all_files(sys.argv[1])
-  for filename in files:
-    read_file(filename)
+  # for filename in files:
+  #   read_file(filename)
+  with Pool(30) as p:
+    p.map(read_file, files)
 
 
