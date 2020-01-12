@@ -12,7 +12,7 @@ def read_file(filename):
   with open(filename, 'r') as f:
     stream = f.read()
     tmp = yaml.load(stream)
-    #pdb.set_trace()
+    pdb.set_trace()
     basename, ext = os.path.split(os.path.basename(filename))
     cfile = os.path.join(os.path.dirname(filename), "list/", "%s.c"%basename)
     sfile = os.path.join(os.path.dirname(filename), "list/", "%s.s"%basename)
