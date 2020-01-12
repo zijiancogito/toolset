@@ -128,7 +128,7 @@ class AsmParser:
   OFFSET = "[\S\s]{0,}[\+\-]0x[0-9A-Fa-f]{1,16}\]\Z"
 
   def __init__(self, asm_block):
-    self._asm_block = asm_block# re.sub(" PTR", "", asm_block.strip())
+    self._asm_block = asm_block.strip()# re.sub(" PTR", "", asm_block.strip())
     self._addr_tab = {}
     self._imm_tab = {}
     self._offset_tab = {}
@@ -206,9 +206,9 @@ class AsmParser:
 
   def _set_insn_list(self):
     for ins in self._asm_block.split(';'):
-      opc = [ins.split('\t')[0].strip()]
-      if len(ins.split('\t')) > 1:
-        ops = ins.split('\t')[1].split(',')
+      opc = [ins.split(r'[\s]{2,}')[0].strip()]
+      if len(ins.split(r'[\s]{2,}')) > 1:
+        ops = ins.split(r'[\s]{2,}')[1].split(',')
         for op in ops:
           opc.append(op.strip())
       self._insn_list.append(opc)
@@ -292,6 +292,6 @@ if __name__ == "__main__":
   print(a.imm_map)
   print(a.offset_map)
   print(a.ins_seq)
-  e = AsmELFInfo("../../DataSets/ccode/a.out")
-  print(e.rodata)
-  print(e.data)
+  # e = AsmELFInfo("../../DataSets/ccode/a.out")
+  # print(e.rodata)
+  # print(e.data)
